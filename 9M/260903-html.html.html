@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>과제 복습</title>
+</head>
+<style>
+    table,
+    th,
+    td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+
+    th,
+    td {
+        padding: 10px;
+    }
+</style>
+
+<body>
+    <header>
+        <h1>개구리</h1>
+        <p>귀여운 개구리가 있는 시스템입니다</p>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#cool-frog">멋있는 개구리</a></li>
+            <li><a href="#strong-frog">강한 개구리</a></li>
+            <li><a href="#king-frog">대표 개구리</a></li>
+            <li><a href="#create-frog">개구리 등록</a></li>
+        </ul>
+    </nav>
+    <hr>
+    <h2 id="cool-frog">멋있는 개구리</h2>
+    <p>
+        <strong>개구리</strong>입니다. <br> <mark>진짜로</mark>
+    </p>
+    <hr>
+    <h2 id="strong-frog">강한 개구리</h2>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+    </ul>
+    <hr>
+    <h2 id="king-frog">대표 개구리</h2>
+    <figure>
+        <img src="sample/gaguri.png" alt="다소곳하게 앉아있는 개구리" width="500" height="500">
+        <figcaption>
+            <em>개구리입니다.</em>
+        </figcaption>
+    </figure>
+    <hr>
+    <h2>개구리의 특성</h2>
+    <table>
+        <caption>개구리</caption>
+        <thead>
+            <tr>
+                <th>1번 개구리</th>
+                <td colspan="4">멋지다</td>
+            </tr>
+        </thead>
+        <tbody>
+            <th>2번 개구리</th>
+            <td>귀엽다</td>
+            <tr>
+                <th colspan="2">멋있고 귀엽다</th>
+            </tr>
+        </tbody>
+    </table>
+    <hr>
+    <h2 id="create-frog">개구리 등록</h2>
+    <form action="#">
+        <fieldset>
+            <legend>신규 개구리 등록</legend>
+            <label for="new-frog">개구리명:</label>
+            <input id="new-frog" name="newfrog" type="text" placeholder="ex) 개굴개굴">
+            <br><br>
+            <label for="nickname-frog">별명:</label>
+            <input id="nickname-frog" name="nicknamefrog" type="text" placeholder="ex) 우엉우엉">
+            <br><br>
+            <label for="color-frog">색깔</label>
+            <select name="colorfrog" id="color-frog">
+                <option value="red">빨강</option>
+                <option value="zuhwang">주황</option>
+                <option value="yellow">노랑</option>
+                <option value="blue">파랑</option>
+                <option value="green">초록</option>
+            </select>
+            <br><br>
+
+            <p>귀여움 상태</p>
+            <input type="radio" id="extrmely-cute" name="status" value="extremlycute" checked>
+            <label for="extrmely-cute">매우</label>
+            <input type="radio" id="super-cute" name="status" value="supercute">
+            <label for="super-cute">굉장히</label>
+            <br><br>
+            <label for="introduce-my-frog">자기소개</label> <br>
+            <textarea name="introducemyfrog" id="introduce-my-frog" rows="10"
+                placeholder=" 자신의 개구리가 얼마나 귀여운지 나열하시오."></textarea>
+            <br>
+            <button type="submit">개구리 등록</button>
+            <button type="reset">다음에 등록</button>
+        </fieldset>
+        <hr>
+        <h2>개구리 링크</h2>
+        <p>개구리 코드는
+            <a href="https://namu.wiki/w/%EA%B0%9C%EA%B5%AC%EB%A6%AC">이 곳</a>
+            에서 관리합니다.
+        </p>
+    </form>
+    <hr>
+    <footer>
+        <p>작성자 : 개구리</p>
+        <p>풀스택 개발자 과정 HTML 복습</p>
+        <p>작성일: 2026-09-03</p>
+        
+    </footer>
+
+
+</body>
+
+</html>
