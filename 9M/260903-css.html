@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS 복습</title>
+    <style>
+        /* 태그 선택자 */
+        h2 {
+            color: red;
+        }
+
+        /* 자식 선택자 - 후손 선택자 - 띄워쓰기 */
+        #lecture-list li {
+            font-weight: bold;
+        }
+
+        /* 자식 선택자 - 자손 선택자 - > 로 표시 */
+        body>p {
+            color: rgb(238, 217, 28);
+        }
+
+        /* 자손 선택자 - 하위 선택자 */
+        body p {
+            font-size: 30px;
+        }
+
+        /* 클래스 선택자 - . 을 찍는다 */
+        .highlight-text {
+            background-color: pink;
+        }
+
+        /* 아이디 선택자 - 페이지에서 단 하나 뿐 */
+        #blue-text {
+            color: blue;
+        }
+
+        /* 속성 선택자 - 특정 속성, 속성값 */
+        input[type="text"] {
+            border: 7px solid orange;
+        }
+
+        input[type="radio"]:checked + label {
+            font-weight: bold;
+            color: blueviolet;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div>
+            <span>
+                <h1>CSS 선택자</h1>
+            </span>
+        </div>
+    </header>
+    <nav>
+        <p>CSS는 HTML 뼈대에 디자인 옷을 입히는 언어이다. 내가 꾸미고 싶은 대상을 정확히 '선택'하는 것이 가장 중요하다.</p>
+    </nav>
+
+    <main>
+        <span>
+            <h2>오늘의 강의 목록</h2>
+        </span>
+    </main>
+    <ul id="lecture-list">
+        <li>태그 선택자</li>
+        <li class="highlight-text">클래스 선택자</li>
+        <li id="blue-text">아이디 선택자</li>
+        <li class="highlight-text">후손/자손 선택자</li>
+    </ul>
+    <!-- 태그에 직접 작성하는 인라인 스타일 -->
+    <p style="color: green; font-style: italic;">이 문단은 CSS를 이용해 수업 중에 직접 꾸며볼 예정입니다.</p>
+    <div>
+        <h2>폼 요소 선택하기</h2>
+    </div>
+    <input type="text" name="text" placeholder="텍스트 입력창">
+    <input type="number" name="number" placeholder="숫자 입력창">
+    <div>
+        <p>선호 과목</p>
+    </div>
+    <span>
+        <input type="radio" name="subject" id="subject-html" value="html" checked>
+        <label for="subject-html">HTML</label>
+    </span>
+    <span>
+        <input type="radio" name="subject" id="subject-css" value="css">
+        <label for="subject-css">CSS</label>
+    </span>
+</body>
+
+</html>

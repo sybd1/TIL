@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS 복습2</title>
+    <style>
+        h2 {
+            color: red;
+        }
+
+        .highlights-text {
+            background-color: yellow;
+        }
+
+        #blue-text {
+            color: blue;
+        }
+
+        #lecture-list li {
+            font-weight: bold;
+        }
+
+        body > p {
+            font-size: 30px;            
+        }
+
+        input[type="text"] {
+            border: 5px solid orange;
+        }
+
+        input[type="radio"]:checked + label {
+            color: blueviolet;
+            font-weight: bold;
+        }
+
+
+    </style>
+</head>
+<body>
+    <h1>CSS 선택자</h1>
+    <p>CSS는 HTML 뼈대에 디자인 옷을 입히는 언어이다. 내가 꾸미고 싶은 대상을 정확히 '선택'하는 것이 가장 중요하다.</p>
+
+    <h2>오늘의 강의 목록</h2>
+    <ul id="lecture-list">
+        <li>태그 선택자</li>
+        <li class="highlights-text">클래스 선택자</li>
+        <li id="blue-text">아이디 선택자</li>
+        <li class="highlights-text">후손/자손 선택자</li>        
+    </ul>
+
+    <p style="color: green; font-style: italic;">이 문단은 CSS를 이용해 수업 중에 직접 꾸며볼 예정입니다.</p>
+
+    <h2>폼 요소 선택하기</h2>
+    <form action="#">
+        <input type="text" placeholder="텍스트 입력창">
+        <input type="number" placeholder="숫자 입력창">
+
+        <p>선호 과목</p>
+        <input type="radio" id="subject-html" name="subject" value="html" checked>
+        <label for="subject-html">HTML</label>
+        <input type="radio" id="subject-css" name="subject" value="css">
+        <label for="subject-css">CSS</label>
+    </form>
+</body>
+</html>

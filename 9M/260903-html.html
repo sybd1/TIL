@@ -4,123 +4,162 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>과제 복습</title>
-</head>
-<style>
-    table,
-    th,
-    td {
-        border: 1px solid black;
-        border-collapse: collapse;
-    }
+    <title>HTML과제_강민기</title>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
 
-    th,
-    td {
-        padding: 10px;
-    }
-</style>
+        th,
+        td {
+            padding: 6px;
+        }
+    </style>
+</head>
 
 <body>
     <header>
-        <h1>개구리</h1>
-        <p>귀여운 개구리가 있는 시스템입니다</p>
+        <h1>Ohgiraffers Menu Manager</h1>
     </header>
+
+    <p>메뉴를 등록하고, 조회하고 관리할 수 있는 메뉴 시스템입니다.</p>
+
     <nav>
         <ul>
-            <li><a href="#cool-frog">멋있는 개구리</a></li>
-            <li><a href="#strong-frog">강한 개구리</a></li>
-            <li><a href="#king-frog">대표 개구리</a></li>
-            <li><a href="#create-frog">개구리 등록</a></li>
+            <li><a href="#service">서비스 소개</a></li>
+            <li><a href="#category">카테고리</a></li>
+            <li><a href="#menu-list">메뉴 목록</a></li>
+            <li><a href="#menu-create">메뉴 등록</a></li>
         </ul>
     </nav>
-    <hr>
-    <h2 id="cool-frog">멋있는 개구리</h2>
-    <p>
-        <strong>개구리</strong>입니다. <br> <mark>진짜로</mark>
-    </p>
-    <hr>
-    <h2 id="strong-frog">강한 개구리</h2>
-    <ul>
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
-        <li>4</li>
-        <li>5</li>
-        <li>6</li>
-    </ul>
-    <hr>
-    <h2 id="king-frog">대표 개구리</h2>
-    <figure>
-        <img src="sample/gaguri.png" alt="다소곳하게 앉아있는 개구리" width="500" height="500">
-        <figcaption>
-            <em>개구리입니다.</em>
-        </figcaption>
-    </figure>
-    <hr>
-    <h2>개구리의 특성</h2>
-    <table>
-        <caption>개구리</caption>
-        <thead>
-            <tr>
-                <th>1번 개구리</th>
-                <td colspan="4">멋지다</td>
-            </tr>
-        </thead>
-        <tbody>
-            <th>2번 개구리</th>
-            <td>귀엽다</td>
-            <tr>
-                <th colspan="2">멋있고 귀엽다</th>
-            </tr>
-        </tbody>
-    </table>
-    <hr>
-    <h2 id="create-frog">개구리 등록</h2>
-    <form action="#">
-        <fieldset>
-            <legend>신규 개구리 등록</legend>
-            <label for="new-frog">개구리명:</label>
-            <input id="new-frog" name="newfrog" type="text" placeholder="ex) 개굴개굴">
-            <br><br>
-            <label for="nickname-frog">별명:</label>
-            <input id="nickname-frog" name="nicknamefrog" type="text" placeholder="ex) 우엉우엉">
-            <br><br>
-            <label for="color-frog">색깔</label>
-            <select name="colorfrog" id="color-frog">
-                <option value="red">빨강</option>
-                <option value="zuhwang">주황</option>
-                <option value="yellow">노랑</option>
-                <option value="blue">파랑</option>
-                <option value="green">초록</option>
-            </select>
-            <br><br>
 
-            <p>귀여움 상태</p>
-            <input type="radio" id="extrmely-cute" name="status" value="extremlycute" checked>
-            <label for="extrmely-cute">매우</label>
-            <input type="radio" id="super-cute" name="status" value="supercute">
-            <label for="super-cute">굉장히</label>
-            <br><br>
-            <label for="introduce-my-frog">자기소개</label> <br>
-            <textarea name="introducemyfrog" id="introduce-my-frog" rows="10"
-                placeholder=" 자신의 개구리가 얼마나 귀여운지 나열하시오."></textarea>
-            <br>
-            <button type="submit">개구리 등록</button>
-            <button type="reset">다음에 등록</button>
-        </fieldset>
+    <hr>
+
+    <main>
+        <h2 id="service">서비스 소개</h2>
+        <strong>Ohgiraffers Menu Manager</strong>는 음식점의 메뉴 정보를 관리하기 위한 페이지입니다. <br>
+        메뉴명, 가격, 카테고리, 판매 상태를 한눈에 확인할 수 있습니다.
+        <br><br>
+        이번 HTML 과제에서는 <mark>화면의 구조</mark>를 만드는 것에 집중합니다. 디자인은 다음 CSS 과제에서 적용할 예정입니다.
         <hr>
-        <h2>개구리 링크</h2>
-        <p>개구리 코드는
-            <a href="https://namu.wiki/w/%EA%B0%9C%EA%B5%AC%EB%A6%AC">이 곳</a>
-            에서 관리합니다.
-        </p>
-    </form>
+        <h2 id="category">카테고리 목록</h2>
+        <ul>
+            <li>한식</li>
+            <li>중식</li>
+            <li>일식</li>
+            <li>양식</li>
+            <li>디저트</li>
+            <li>음료</li>
+        </ul>
+        <hr>
+
+        <h2>대표 메뉴</h2>
+        <figure>
+            <img src="/9M/sample/gaguri.png" alt="노을지는 파리의 에펠탑 케이크" width="300" height="200">
+            <figcaption>오늘의 대표 메뉴 이미지입니다.</figcaption>
+        </figure>
+        <hr>
+        <h2 id="menu-list">메뉴 목록</h2>
+        <table>
+            <caption>등록된 메뉴 목록</caption>
+            <thead>
+                <tr>
+                    <th>메뉴 번호</th>
+                    <th>메뉴명</th>
+                    <th>가격</th>
+                    <th>카테고리</th>
+                    <th>판매 상태</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>한우딸기국밥</td>
+                    <td>15,000원</td>
+                    <td>한식</td>
+                    <td>판매중</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>참치맛아이스크림</td>
+                    <td>8,000원</td>
+                    <td>디저트</td>
+                    <td>판매중</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>바닐라김치라떼</td>
+                    <td>6,500원</td>
+                    <td>음료</td>
+                    <td>품절</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>매운초코파스타</td>
+                    <td>12,000원</td>
+                    <td>양식</td>
+                    <td>판매중</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>마라민트탕수육</td>
+                    <td>18,000원</td>
+                    <td>중식</td>
+                    <td>판매중</td>
+                </tr>
+                <tr>
+                    <td colspan="5">총 5개의 메뉴가 등록되어 있습니다.</td>
+                </tr>
+            </tbody>
+        </table>
+        <hr>
+        <h2 id="menu-create">메뉴 등록</h2>
+        <form>
+            <fieldset>
+                <legend>신규 메뉴 정보</legend>
+                <label for="manu-name">메뉴명</label>
+                <input id="menu-name" name="menuname" type="name" placeholder="메뉴명을 입력하세요">
+                <br><br>
+                <label for="menu-price">가격</label>
+                <input id="menu-price" name="menuprice" type="price" placeholder="가격을 입력하세요">
+                <br><br>
+                <label for="menu-category">카테고리</label>
+                <select id="menu-category" name="menucategory">
+                    <option value="">카테고리 선택</option>
+                    <option value="koreanfood">한식</option>
+                    <option value="chinesefood">중식</option>
+                    <option value="westernfood">양식</option>
+                    <option value="desert">디저트</option>
+                    <option value="baverage">음료</option>
+                </select>
+                <br><br>
+                <p>판매 상태</p>
+
+                <input type="radio" id="menu-sale" name="status" value="sale" checked>
+                <label for="menu-sale">판매중</label>
+                <input type="radio" id="menu-soldout" name="status" value="soldout">
+                <label for="menu-soldout">품절</label>
+                <br><br>
+                <label for="memu-explane">메뉴 설명</label> <br>
+                <textarea name="menuexplane" id="menu-explane" rows="4" placeholder="메뉴 설명을 입력하세요"></textarea>
+                <br><br>
+                <button type="submit">메뉴 등록</button>
+                <button type="reset">다시 작성</button>
+            </fieldset>
+        </form>
+    </main>
+    <hr>
+    <h2>관련 링크</h2>
+    <br>
+    <p>프로젝트 코드는 <a href="https://github.com/sybd1/TIL">Gitbub</a>에서 관리합니다.</p>
     <hr>
     <footer>
-        <p>작성자 : 개구리</p>
-        <p>풀스택 개발자 과정 HTML 복습</p>
-        <p>작성일: 2026-09-03</p>
-        
+        <p>작성자 : 강민기</p>
+        <p>풀스택 개발자 과정 HTML 과제</p>
+        <p>작성일:2026-09-03</p>
     </footer>
 
 
