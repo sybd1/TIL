@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML & CSS 연습</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Acme&family=Climate+Crisis:YEAR@1979..2050&family=Permanent+Marker&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="260905-assignment.css">
+</head>
+
+<body>
+    <div class="wrap">
+        <header>
+            <h1>Polar Penguin Explorer</h1>
+
+            <nav>
+                <p>남극에 서식하는 펭귄에 관한 모든 정보와 관리를 위한 탐험 페이지</p>
+
+                <ul>
+                    <li><a href="#index-intro">펭귄 소개</a></li>
+                    <li><a href="#index-place">주요 서식지</a></li>
+                    <li><a href="#index-picture">탐험 사진</a></li>
+                    <li><a href="#index-record">탐험 기록</a></li>
+                    <li><a href="#index-register">신규 탐험 등록</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <section>
+                <h2 id="index-intro">펭귄 소개</h2>
+                <hr>
+                <p>
+                    <strong>Polar Penguin Explorer</strong>는 남극의 신비로운 펭귄에 대한 지식을 넓히고 탐험 데이터를 관리하는
+                    페이지입니다. 펭귄의 종류, 특징, 서식지 정보를 한눈에 확인하세요.
+                </p>
+                <p>
+                    이제 탐험을 떠나 <strong><mark>우아한 펭귄</mark></strong>의 데이터를 직접 기록해보세요.
+                </p>
+
+            </section>
+            <section>
+                <h2 id="index-place">주요 서식지</h2>
+                <hr>
+                <ul class="place-list">
+                    <li>King George Island</li>
+                    <li>Snow Hill Island</li>
+                    <li>Ross Island</li>
+                    <li>Gould Bay</li>
+                    <li>Salisburry Plain</li>
+                    <li>Deception Island</li>
+                </ul>
+            </section>
+            <section>
+                <h2 id="index-picture">탐험 사진</h2>
+                <hr>
+                <figure>
+                    <img src="sample/260905-main.jpg" alt="황제 펭귄" width="500">
+                    <figcaption>남극 대륙의 황제펭귄</figcaption>
+                </figure>
+                <figure>
+                    <img src="sample/260905-main2.png" alt="왕 펭귄" width="500">
+                    <figcaption>남극 대륙의 왕펭귄</figcaption>
+                </figure>
+            </section>
+            <section class="record-style">
+                <h2 id="index-record">탐험 기록</h2>
+                <hr>
+                <table>
+                    <caption>최근 기록된 탐험 데이터 목록</caption>
+                    <thead>
+                        <tr>
+                            <th>기록 번호</th>
+                            <th>탐험 지역</th>
+                            <th>발견 일차</th>
+                            <th>펭귄 종류</th>
+                            <th>상태</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Ross Island</td>
+                            <td>2026-09-02</td>
+                            <td>아델리펭귄</td>
+                            <td class="green-text">완료</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Gould Bay</td>
+                            <td>2026-09-03</td>
+                            <td>황제펭귄</td>
+                            <td class="green-text">연구중</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Salisburry Plain</td>
+                            <td>2026-09-04</td>
+                            <td>킹펭귄</td>
+                            <td class="red-text">점검 필요</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>King Geroge Island</td>
+                            <td>2026-09-05</td>
+                            <td>황제펭귄</td>
+                            <td class="green-text">연구중</td>
+                        </tr>
+                        <tr id="lasttd">
+                            <td colspan="5">총 4건의 탐험 기록이 있습니다.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section>
+                <h2 id="index-register">신규 탐험 등록</h2>
+                <hr>
+                <form action="#" method="post">
+                    <fieldset>
+                        <legend>신규 탐험 등록 정보</legend>
+                        <div>
+                            <label for="exploration-area">탐험 지역</label> <br>
+                            <input id="exploration-area" type="text" name="explorationarea" placeholder="탐험 지역을 입력하세요">
+                        </div>
+
+                        <br>
+
+                        <div>
+                            <label for="date-of-discovery">발견 일자</label> <br>
+                            <input id="date-of-discovery" type="date" name="dateofdiscovery">
+                        </div>
+
+                        <br>
+
+                        <div>
+                            <label for="penguin-type">펭귄 종류</label> <br>
+                            <select name="penguintype" id="penguin-type">
+                                <option value="">펭귄 종류 선택</option>
+                                <option value="emperorpenguin">황제펭귄</option>
+                                <option value="kingpenguin">왕펭귄</option>
+                                <option value="adeliepenguin">아델리펭귄</option>
+                                <option value="Chinstrappenguin">턱끈펭귄</option>
+                                <option value="gentoopenguin">젠투펭귄</option>
+                                <option value="etc">---그 외---</option>
+                            </select>
+                        </div>
+
+                        <br>
+
+                        <div>
+                            <label for="explane-description">탐험 설명</label> <br>
+                            <textarea name="explanedescription" id="explane-description" placeholder="탐험 설명을 입력하세요"
+                                rows="4"></textarea>
+                        </div>
+
+                        <br>
+                        <div>
+                            <button type="submit">탐험 기록 등록</button>
+                            <button type="reset">다시 작성</button>
+                        </div>
+
+                    </fieldset>
+                </form>
+            </section>
+            <section class="link">
+                <h2>관련 링크</h2>
+                <hr>
+                <p>황제펭귄과 왕펭귄을 구분하고 싶다면 <a
+                        href="https://www.quora.com/How-can-you-compare-and-contrast-an-emperor-penguin-and-a-king-penguin">이
+                        곳</a>에서 확인하세요.</p>
+            </section>
+        </main>
+
+        <hr>
+
+        <footer>
+            <p>작성자: 강민기</p>
+            <p class="interval">풀스택 개발자 과정 HTML & CSS 과제</p>
+            <p>작성일: 2026-09-05</p>
+        </footer>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,230 @@
+/* 전체 배경색 */
+body {
+    margin: 50px auto;
+    padding: 0px;
+    width: 950px;
+    border: 1px solid rgba(148, 219, 224, 0.432);
+    border-radius: 15px;
+    /* background-color: rgba(36, 184, 230, 0.219); */
+    background-image: url(sample/260905-background3.png);
+    background-size: cover;
+    box-shadow: 2px 5px 5px 5px rgba(88, 155, 172, 0.596);
+    align-items: center;
+    
+}
+
+/* 바디 내부 모양과 배경색 */
+.wrap {
+    margin: 0;
+    border: 1px solid white;
+    border-radius: 15px;
+    background-color: white;
+}
+
+/* 모든 섹션 테두리 생성 */
+section {
+    margin: 17px;
+    padding: 15px;
+    border: 1px solid rgb(191, 191, 214);
+    border-radius: 15px;
+    background-color: rgba(0, 132, 255, 0.089);
+}
+
+/* 최상단 헤더 제목*/
+h1 {
+    margin: 0;
+    padding: 15px 15px 10px 15px;
+    font-family: 'Acme';
+    font-style: italic;
+    font-size: 50px;
+    text-align: center;
+    color: rgb(20, 19, 131);
+}
+
+/* 부제목 간격 조절 */
+h2 {
+    margin: 0px 0px 10px 0px;
+}
+
+hr {
+    margin: 7px;
+}
+
+/* 상단 네비게이션 */
+nav > p {
+    margin: 5px;
+    text-align: center;
+    font-weight: bold;
+}
+
+nav ul {
+    margin: 0;
+    padding: 20px 60px;
+    list-style: none;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+ul a {
+    padding: 6px 10px;
+    border: 1px solid rgba(95, 95, 209, 0.747);
+    border-radius: 5px;
+    background-color: rgba(95, 95, 209, 0.747);
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* 펭귄 소개 섹션 */
+section ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-align: center;
+    display: flex;
+    justify-content: left;
+    gap: 8px;
+}
+
+/* 주요 서식지 섹션 */
+.place-list li {
+    padding: 7px 8px;
+    border: 1px solid rgba(95, 167, 209, 0.747);
+    border-radius: 32px;
+    background-color: rgba(95, 167, 209, 0.747);
+    color: white;
+    text-decoration: none;
+}
+
+/* 탐험 사진 섹션 */
+figure {
+    margin: 20px 0px 5px 0px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* 탐험 기록 섹션 */
+table {
+    margin: 15px auto;
+    padding: 5px;
+    border-collapse: collapse;
+    border: 1px solid gray;
+    text-align: center;
+}
+
+caption {
+    margin: 5px;
+    font-weight: bold;
+}
+
+thead {
+    background-color: rgba(0, 0, 0, 0.192);
+}
+
+tbody {
+    background-color: rgba(183, 190, 143, 0.212);
+}
+
+tr,
+th,
+td {
+    padding: 5px 20px;
+    text-align: center;
+    border: 1px solid gray;
+}
+
+.green-text {
+    color: green;
+    font-weight: bold;
+}
+
+.red-text {
+    color: red;
+    font-weight: bold;
+}
+
+#lasttd {
+    background-color: rgba(30, 155, 124, 0.226);
+}
+
+/* 신규 탐험 등록 세션 */
+fieldset {
+    padding: 13px 17px 20px 17px;
+    border: 2px solid rgba(128, 128, 128, 0.397);
+    border-radius: 12px;
+    font-weight: bold;
+}
+
+input[type="text"] {
+    margin-top: 5px;
+    width: 100%;
+    height: 21px;
+}
+
+input[type="date"] {
+    width: 100%;
+    text-align: center;
+    height: 21px;
+}
+
+select {
+    margin-top: 5px;
+    width: 100%;
+    cursor: pointer;
+}
+
+textarea {
+    margin-top: 5px;
+    width: 100%;
+}
+
+/* 탐험 기록 등록 버튼 */
+button[type="submit"] {
+    margin-left: auto;
+    padding: 5px;
+    width: 100px;
+    color: white;
+    border-radius: 4px;
+    background-color: rgba(28, 160, 11, 0.664);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: green;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.562);
+    transform: translateY(-10px);
+}
+
+/* 다시 작성 버튼 */
+button[type="reset"] {
+    padding: 5px;
+    width: 100px;
+    color: white;
+    border-radius: 4px;
+    background-color: rgba(53, 49, 49, 0.493);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button[type="reset"]:hover {
+    background-color: rgba(0, 0, 0, 0.692);
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.562);
+    transform: translateY(-10px);
+}
+
+/* 푸터 */
+footer {
+    text-align: center;
+    font-size: 12px
+}
+
+footer p {
+    margin: 3px;
+}
+
+.interval {
+    margin-top: 13px;
+}

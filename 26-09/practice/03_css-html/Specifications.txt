@@ -1,0 +1,6 @@
+- 링크 또는 버튼에 `:hover`, `transition` 효과를 적용하세요.
+- 판매 상태가 구분되어 보이도록 스타일을 적용하세요.
+- 선택자: 태그 선택자, 클래스 선택자, 아이디 선택자, 후손/자손 선택자, `:hover`
+- 속성: `margin`, `padding`, `border`, `border-radius`, `background-color`, `color`, `display`, `flex`, `gap`, `transition`
+cursor: pointer;
+overflow-x: auto;
