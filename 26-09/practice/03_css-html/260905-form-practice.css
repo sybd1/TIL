@@ -1,0 +1,43 @@
+input[type="text"],
+input[type="number"],
+select {
+    width: 100%;
+    height: 20px;
+}
+
+textarea {
+    width: 100%;
+    height: 50px;
+}
+
+button[type="submit"] {
+    margin: 5px;
+    padding: 3px;
+    width: 70px;
+    transition: all 0.3s ease;
+    background-color: aqua;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    transform: translateY(-10px);
+    background-color: rgba(75, 16, 16, 0.541);
+    color: white;
+    box-shadow: 2px 2px 3px violet;
+}
+
+button[type="reset"] {
+    margin: 5px;
+    padding: 3px;
+    width: 70px;
+    transition: all 0.3s ease;
+    background-color: rgb(179, 255, 0);
+    cursor: pointer;
+}
+
+button[type="reset"]:hover {
+    transform: translateY(-10px);
+    background-color: rgba(194, 24, 66, 0.541);
+    color: black;
+    box-shadow: 2px 2px 3px rgba(204, 43, 31, 0.671);
+}

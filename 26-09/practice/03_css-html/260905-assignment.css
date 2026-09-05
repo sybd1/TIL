@@ -2,7 +2,7 @@
 body {
     margin: 50px auto;
     padding: 0px;
-    width: 950px;
+    width: 1250px;
     border: 1px solid rgba(148, 219, 224, 0.432);
     border-radius: 15px;
     /* background-color: rgba(36, 184, 230, 0.219); */
@@ -107,8 +107,9 @@ figure {
 
 /* 탐험 기록 섹션 */
 table {
-    margin: 15px auto;
+    margin: 20px auto;
     padding: 5px;
+    width: 1000px;
     border-collapse: collapse;
     border: 1px solid gray;
     text-align: center;

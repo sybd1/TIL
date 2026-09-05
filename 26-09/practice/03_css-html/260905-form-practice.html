@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form 태그 연습</title>
+    <link rel="stylesheet" href="260905-form-practice.css">
+</head>
+
+<body>
+    <form action="#" method="post">
+        <fieldset>
+            <legend>타이틀</legend>
+            <p>
+                <label for="a">이름</label> <br>
+                <input type="text" id="a" name="a" placeholder="이름 입력">
+            </p>
+
+            <p>
+                <label for="age">나이</label> <br>
+                <input type="number" id="age" name="age" placeholder="나이 입력">
+            </p>
+
+            <p>
+                <label for="bb">종류</label> <br>
+                <select name="bcb" id="bb">
+                    <option value="">선택</option>
+                    <option value="sdf">1</option>
+                    <option value="dhfg">2</option>
+                    <option value="kruyt">3</option>
+                    <option value="ymur">4</option>
+                </select>
+            </p>
+
+            <p>상태 <br>
+                <input type="radio" id="mmm" name="mmm" value="mnm" checked>
+                <label for="789">하겠다</label>
+                <input type="radio" id="lll" name="mmm" value="ljl">
+                <label for="567">하지 않겠다</label>
+            </p>
+
+            <p>
+                <label for="text">설명</label> <br>
+                <textarea name="area" id="text" placeholder="입력하시오"></textarea>
+            </p>
+            <p>
+                <button type="submit">확인</button>
+                <button type="reset">취소</button>
+            </p>
+        </fieldset>
+    </form>
+</body>
+
+</html>
