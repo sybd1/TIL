@@ -35,10 +35,19 @@
 // console.log(total);
 
 //짝수만 골라서 합산하기
-const number = [3, 12, 7, 8, 20, 5, 14];
-let total = 0;
-for (const pr of number) {
-    if (pr % 2 === 0)
-        total = total + pr
-}
-console.log(total)
+// const number = [3, 12, 7, 8, 20, 5, 14];
+// let total = 0;
+// for (const pr of number) {
+//     if (pr % 2 === 0)
+//         total = total + pr
+// }
+// console.log(total)
+
+const cookie = [10, 65, 15, 79, 12, 9];
+let maxCookie = cookie[0];
+    for (const count of cookie) {
+        if (count > maxCookie) {
+            maxCookie = count;
+        }
+    }
+    console.log(maxCookie);

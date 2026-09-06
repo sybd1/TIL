@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css 연습</title>
+    <style>
+        h1 {
+            margin: 50px;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        ul {
+            margin: 90px auto;
+            padding: 50px 100px;
+            border: 1px solid black;
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+
+        li {
+            margin: 5px;
+            padding: 5px;
+            border: 1px solid black;
+            border-radius: 12px;
+            background-color: aqua;
+            color: blue;
+        }
+
+        h2 {
+            margin-top: 900px;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        section {
+            margin: 10px auto;
+            padding: 0px 60px;
+            text-align: center;
+        }
+
+        button {
+            transition: all 0.3s ease;
+            box-shadow: 0px 7px 7px rgb(187, 12, 158);
+            margin: 0px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            width: 100px;
+            height: 40px;
+            background-color: black;
+        }
+        .green:hover {
+            background-color: green;
+            color: white;
+            transform: translateY(-20px);
+        }
+
+        .blue:hover {
+            background-color: blue;
+            color: white;  
+            transform: translateY(-10px);
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1 id="top"><a href="#bottom">클릭</a></h1>
+    </header>
+    <div>
+        <ul>
+            <li>aaaaaaa</li>
+            <li>bbbbbbb</li>
+            <li>ccccccc</li>
+            <li>ddddddd</li>
+            <li>eeeeeee</li>
+        </ul>
+    </div>
+    <section>
+        <button type="submit" class="green">그렇습니다</button>
+        <button type="reset" class="blue">맞습니다</button>
+    </section>
+    <h2 id="bottom"><a href="#top">클릭</a></h2>
+</body>
+
+</html>
