@@ -1,4 +1,4 @@
-## [2026-09-05] HTML & CSS 연습
+## [2026-09-05] HTML & CSS
 
 ### 1. 오늘 배운 핵심 개념 (What I Learned)
 #### CSS
