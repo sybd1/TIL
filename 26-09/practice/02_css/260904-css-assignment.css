@@ -1,0 +1,172 @@
+/* 헤더 */
+
+header h1 {
+    padding: 5px;
+    text-align: center;
+}
+
+header p {
+    padding: 5px;
+    text-align: center;
+    color: rgb(65, 69, 73);
+    opacity: 0.9;
+}
+
+/* 네비게이션 */
+
+nav {
+    margin: 20px auto 40px;
+    padding: 0px;
+}
+
+.nav-category {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    align-items: center;
+    padding: 0px;
+    margin: 0px;
+    gap: calc(16px);
+}
+
+.nav-category li {
+    margin: 0px;
+    padding: 12px 20px;
+    background-color: blue;
+    border-radius: 7px;
+    white-space: nowrap;
+}
+
+.nav-category li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+}
+
+/* 메인 섹션 */
+
+main section {
+    margin: 15px;
+    padding: 0px;
+    border: 3px solid rgba(202, 199, 199, 0.041);
+    border-radius: 12px;
+    background-color: rgba(128, 128, 128, 0.048);    
+}
+
+main h2 {
+    margin: 20px;
+    text-align: left;
+}
+
+main section hr {    
+    margin: 20px;
+}
+
+/* 바디 */
+
+body {
+    background-color: rgb(239, 241, 241);
+}
+
+body>div {
+    margin: 10%;
+    padding: 4%;
+    border: solid white;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px rgb(206, 204, 204);
+    background-color: white;
+}
+
+/* 카테고리 리스트 */
+
+.category-list ul {
+    margin: 10px;
+    padding: 0px;
+    display: flex;
+    list-style: none;
+}
+
+.category-list ul li {
+    margin: 5px;
+    padding: 10px;
+    background-color: rgba(113, 177, 207, 0.205);
+    color: rgb(4, 4, 170);
+    border-radius: 20px;
+    font-weight: 700;
+}
+
+/* 대표 메뉴 */
+
+.picture {
+    margin: 10px 0px 40px;
+    padding: 0px;
+    text-align: center;
+}
+
+img {
+    border-radius: 15px;
+}
+
+/* 메뉴 목록 */
+
+table {
+    margin: auto;
+    padding: 10px;    
+    text-align: center;
+    width: 90%;
+    border-collapse: collapse;
+}
+
+table caption {
+    font-weight: bold;
+    margin: 0px;
+    padding: 10px;
+}
+
+table > thead {
+    background-color: rgb(99, 98, 107);
+    color: white;
+}
+
+table > tbody {
+    background-color: white;
+    color: rgb(0, 0, 0);
+}
+
+tr th {
+    border: 1px solid rgba(187, 161, 161, 0.356);
+    margin: 10px;
+    padding: 10px;
+}
+
+tr td {
+    border: 1px solid rgba(187, 161, 161, 0.356);
+    margin: 10px;
+    padding: 10px;
+}
+
+#except {
+    display: none;
+}
+
+/* 푸터 */
+
+footer {
+    margin: 15px;
+    padding: 0px;
+    border: 3px solid rgba(202, 199, 199, 0.041);
+    border-radius: 12px;
+    background-color: rgba(128, 128, 128, 0.048);
+}
+
+footer p {
+    margin: 20px;
+    text-align: left;
+}
+
+footer section {
+    margin: 20px;
+    text-align: left;
+}
+
+

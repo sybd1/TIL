@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML과제_강민기</title>
+    <link rel="stylesheet" href="260904-css-assignment.css">
+    <!-- <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 6px;
+        }
+    </style> -->
+</head>
+
+<body>
+    <div>
+        <header>
+            <h1>Ohgiraffers Menu Manager</h1>
+            <p>메뉴를 등록하고, 조회하고 관리할 수 있는 메뉴 시스템입니다.</p>
+        </header>
+
+
+
+        <nav>
+            <ul class="nav-category">
+                <li><a href="#service">서비스 소개</a></li>
+                <li><a href="#category">카테고리</a></li>
+                <li><a href="#menu-list">메뉴 목록</a></li>
+                <li><a href="#menu-create">메뉴 등록</a></li>
+            </ul>
+        </nav>
+
+
+
+        <main>
+            <section>
+                <h2 id="service">서비스 소개</h2>
+                <hr>
+                <p>
+                    <strong>Ohgiraffers Menu Manager</strong>는 음식점의 메뉴 정보를 관리하기 위한 페이지입니다. <br>
+                    메뉴명, 가격, 카테고리, 판매 상태를 한눈에 확인할 수 있습니다.
+                    <br><br>
+                    이번 HTML 과제에서는 <mark>화면의 구조</mark>를 만드는 것에 집중합니다. 디자인은 다음 CSS 과제에서 적용할 예정입니다.
+                </p>
+            </section>
+            <section class="category-list">
+                <h2 id="category">카테고리 목록</h2>
+                <hr>
+                <ul>
+                    <li>한식</li>
+                    <li>중식</li>
+                    <li>일식</li>
+                    <li>양식</li>
+                    <li>디저트</li>
+                    <li>음료</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>대표 메뉴</h2>
+                <hr>
+                <figure class="picture">
+                    <img src="/02_css-main/sample/image/flower5.PNG" alt="보라색 꽃">
+                    <figcaption>오늘의 대표 메뉴 이미지입니다.</figcaption>
+                </figure>
+            </section>
+
+            <section>
+                <h2 id="menu-list">메뉴 목록</h2>
+                <hr>
+                <table>
+                    <caption>등록된 메뉴 목록</caption>
+                    <thead>
+                        <tr>
+                            <th>메뉴 번호</th>
+                            <th>메뉴명</th>
+                            <th>가격</th>
+                            <th>카테고리</th>
+                            <th>판매 상태</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>한우딸기국밥</td>
+                            <td>15,000원</td>
+                            <td>한식</td>
+                            <td>판매중</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>참치맛아이스크림</td>
+                            <td>8,000원</td>
+                            <td>디저트</td>
+                            <td>판매중</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>바닐라김치라떼</td>
+                            <td>6,500원</td>
+                            <td>음료</td>
+                            <td>품절</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>매운초코파스타</td>
+                            <td>12,000원</td>
+                            <td>양식</td>
+                            <td>판매중</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>마라민트탕수육</td>
+                            <td>18,000원</td>
+                            <td>중식</td>
+                            <td>판매중</td>
+                        </tr>
+                        <tr>
+                            <td id="except" colspan="5">총 5개의 메뉴가 등록되어 있습니다.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section>
+                <h2 id="menu-create">메뉴 등록</h2>
+                <hr>
+                <form>
+                    <fieldset>
+                        <legend>신규 메뉴 정보</legend>
+                        <label for="menu-name">메뉴명</label>
+                        <input id="menu-name" name="menuname" type="text" placeholder="메뉴명을 입력하세요">
+                        <br><br>
+                        <label for="menu-price">가격</label>
+                        <input id="menu-price" name="menuprice" type="number" placeholder="가격을 입력하세요">
+                        <br><br>
+                        <label for="menu-category">카테고리</label>
+                        <select id="menu-category" name="menucategory">
+                            <option value="">카테고리 선택</option>
+                            <option value="koreanfood">한식</option>
+                            <option value="chinesefood">중식</option>
+                            <option value="westernfood">양식</option>
+                            <option value="dessert">디저트</option>
+                            <option value="beverage">음료</option>
+                        </select>
+                        <br><br>
+                        <p>판매 상태</p>
+
+                        <input type="radio" id="menu-sale" name="status" value="sale" checked>
+                        <label for="menu-sale">판매중</label>
+                        <input type="radio" id="menu-soldout" name="status" value="soldout">
+                        <label for="menu-soldout">품절</label>
+                        <br><br>
+                        <label for="menu-explane">메뉴 설명</label> <br>
+                        <textarea name="menuexplane" id="menu-explane" rows="4" placeholder="메뉴 설명을 입력하세요"></textarea>
+                        <br><br>
+                        <button type="submit">메뉴 등록</button>
+                        <button type="reset">다시 작성</button>
+                    </fieldset>
+                </form>
+            </section>
+        </main>
+
+        <footer>
+            <section>
+                <h2>관련 링크</h2>
+                <hr>
+                <br>
+                <p>프로젝트 코드는 <a href="https://github.com/sybd1/TIL">Github</a>에서 관리합니다.</p>
+                <hr>
+                <p>작성자 : 강민기</p>
+                <p>풀스택 개발자 과정 HTML 과제</p>
+                <p>작성일:2026-09-03</p>
+            </section>
+        </footer>
+    </div>
+
+</body>
+
+</html>
