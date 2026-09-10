@@ -25,38 +25,31 @@
 // 3. 품절 상품이 하나라도 있는지, 모든 가격이 양수인지 확인합니다.
 // 4. 판매 가능한 각 상품의 이름과 가격을 출력
 
-
 const products = [
     { name: '노트', price: 3000, stock: 5 },
     { name: '펜', price: 1000, stock: 0 },
     { name: '파일', price: 2000, stock: 3 }
 ];
 // 1단계
-const allProducts = products.filter(stocks => stocks.stock > 0);
-console.log(allProducts);
+const availableProducts = products.filter(product => product.stock > 0);
+console.log(availableProducts);
 
-allProducts.sort((a, b) => a.price - b.price);
-console.log(allProducts);
+availableProducts.sort((a, b) => a.price - b.price);
+console.log(availableProducts);
 
-const onlyName = allProducts.map(names => names.name);
-console.log(onlyName);
+const productNames = availableProducts.map(product => product.name);
+console.log(productNames);
 
 // 2단계
-const sell = allProducts.reduce((sum, current) => sum + current.price, 0);
-console.log(sell);
+const totalPrice = availableProducts.reduce((sum, current) => sum + current.price, 0);
+console.log(totalPrice);
 
-const pen = products.find(pens => pens.name === '펜');
-console.log(pen);
+const foundPen = products.find(product => product.name === '펜');
+console.log(foundPen);
 
-const soldout = products.some(out => out.stock === 0);
-console.log(soldout);
+const hasSoldOut = products.some(product => product.stock === 0);
+console.log(hasSoldOut);
 
-const everyPrice = products.every(ep => ep.price >= 0);
-console.log(everyPrice);
-
-const each = allProducts.forEach((products) => {
-    console.log(products.name, products.price);
-    return;
-})
-// console.log(allProducts);
-
+products.forEach((products) => {
+    console.log(`${products.name}, ${products.price}`)
+});
