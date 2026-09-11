@@ -23,22 +23,16 @@ const orders = [
 [ '키보드: 100000원', '마우스: 30000원', '모니터: 400000원' ]
 */
 
-// 문제 1 풀이
+console.log(`===============문제 1 풀이===============`);
+
 const orders = [
     { product: '키보드', price: 50000, quantity: 2 },
     { product: '마우스', price: 30000, quantity: 1 },
     { product: '모니터', price: 200000, quantity: 2 }
 ];
 
-const allproduct = orders.map(({ product }) => product);
-console.log(allproduct);
-const allprice = orders.map(({ price }) => price);
-console.log(allprice);
-const allquantity = orders.map(({ quantity }) => quantity);
-console.log(allquantity);
-
-const total = orders.map(({ product, price, quantity }) => `${product} ${price * quantity}원`);
-console.log(total);
+const orderLables = orders.map(({ product, price, quantity }) => `${product} ${price * quantity}원`);
+console.log(orderLables);
 
 
 /*
@@ -69,7 +63,8 @@ const searchHistory = ['JavaScript', 'React', 'HTML'];
 3. HTML
 */
 
-// 문제 2 풀이
+console.log(`===============문제 2 풀이===============`);
+
 const keyword = 'DOM';
 const searchHistory = ['JavaScript', 'React', 'HTML'];
 
@@ -112,16 +107,23 @@ const backTeam = ['장보고', '신사임당'];
 원본 뒤 팀: [ '장보고', '신사임당' ]
 */
 
-// 문제 3 풀이
+console.log(`===============문제 3 풀이===============`);
+
 const frontTeam = ['유관순', '홍길동'];
 const backTeam = ['장보고', '신사임당'];
 
-const allMembers = [ ...frontTeam, ...backTeam, '이순신' ];
+const allMembers = [...frontTeam, ...backTeam, '이순신'];
 function printTeam(leader, ...members) {
-    
+    console.log(`팀장: ${leader}`);
+    console.log('팀원:', members);
+    console.log('원본 앞 팀:', frontTeam);
+    console.log('원본 뒤 팀:', backTeam);
 }
-// console.log('전체명단:', allMembers);
-// console.log(`팀장: ${allMembers[0]}`);
+printTeam(...allMembers);
+
+
+
+
 
 /*
 ======================================================================
@@ -158,9 +160,31 @@ const user = {
 홍길동님의 역할은 student입니다.
 */
 
-// 문제 4 풀이
+console.log(`===============문제 4 풀이===============`);
 
+const user = {
+    id: 1,
+    name: '홍길동',
+    role: 'student',
+    skills: ['JavaScript', 'React', 'CSS']
+};
 
+const { name: userName, nickname = '이름 없음' } = user;
+console.log(`사용자명: ${userName}`);
+console.log(`역할: ${user.role}`);
+
+function printUser({ name, role }) {
+    console.log('별명:', nickname);
+
+    function apart(mainSkill, ...otherSkills) {
+        console.log('주요 기술:', mainSkill);
+        console.log('나머지 기술: ', otherSkills);
+
+        console.log(`${name}님의 역할은 ${role}입니다.`)
+    }
+    apart(...user.skills);
+}
+printUser(user);
 
 /*
 ======================================================================
@@ -218,5 +242,44 @@ const newProduct = {
 전체 상품 가격 합계: 365000
 */
 
-// 문제 5 풀이
+console.log(`===============문제 5 풀이===============`);
 
+const products = [
+    { id: 1, name: '키보드', price: 50000, stock: 3 },
+    { id: 2, name: '마우스', price: 30000, stock: 0 },
+    { id: 3, name: '모니터', price: 200000, stock: 2 }
+];
+
+const newProduct = {
+    id: 4,
+    name: '스피커',
+    price: 80000,
+    stock: 4
+};
+
+const addedProducts = [...products, newProduct];
+console.log(`원본 상품 수: ${products.length}`);
+console.log(`추가 후 상품 수: ${addedProducts.length}`);
+console.log(`원본 키보드 가격: ${products[0].price}`);
+
+const updatedProducts = addedProducts.map(product =>
+    product.id === 1 ? { ...product, price: 55000 } : product);
+console.log(`변경된 키보드 가격: ${updatedProducts[0].price}`);
+
+const availableProducts = addedProducts.filter(stocks => stocks.stock > 0);
+const available = availableProducts.map(name => name.name);
+console.log('판매 가능 상품: ', available);
+
+// reduce로 누적장치 만들기
+const getTotal = (...prices) => {
+    return prices.reduce((sum, price) => sum + price, 0);
+};
+
+// 모든 property에서 가격 밸류 값만 가지고 오기
+const getPrice = updatedProducts.map(prices => prices.price);
+
+// reduce가 있는 함수에 spread 인수 집어넣기
+const total = getTotal(...getPrice);
+
+// 짠
+console.log(`전체 상품 가격 합계 : ${total}`);
