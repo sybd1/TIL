@@ -13,6 +13,7 @@
     - HTMLCollection : getElementsByTagName, getElementsByClassName 같은 여러 개의 'HTML 요소'를 찾아냈을때 반환해주는 'Live Array-like Obeject (살아있는 유사 배열 객체)'이다. DOM에 새로운 요소가 생기거나 기존 요소가 지워지면 실시간으로 즉시 반영되어 업데이트하고 그래서 버그를 유발 할 가능성이 높다. 현재는 거의 사용하지 않는 문법. 최신 메서드를 지원하지 않는다. 
 - querySelector : 조건에 맞는 첫번째 요소를 1개 가져온다. CSS 선택자 문법과 동일하게 다양한 태그를 모두 사용할 수 있다. 최신 메서드를 지원한다. document 뿐만 아니라 어떤 특정 요소에서도 바로 호출할 수 있다.
     NodeList : querySelectorAll()같이 여러 개의 '노드(태그, 텍스트)'를 찾아냈을때 이들을 한 묶음으로 담아 반환해주는 'Static Array-like Obeject (정적 유사 배열 객체)'. NodeList는 자체적으로 인덱스 접근, .length, .forEach로 지원하지만, map, filterm reduce 최신 메서드는 사용할 수 없다. 그래서 spread syntax 같이 배열로 바꾼 뒤에 최신 메서드를 사용한다.
+    
 ### 2. 코드 예시 (Code)
 ```text
 - DOM Tree
