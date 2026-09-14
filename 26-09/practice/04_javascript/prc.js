@@ -103,6 +103,8 @@
 
 // twice(5)
 
+
+
 const numbers = [1, 2, 3, 4, 5, 6];
 
 function sumEvens(arr) {
@@ -115,4 +117,20 @@ function sumEvens(arr) {
   }
   return total;
 }
-console.log(sumEvens(numbers)); 
+console.log(sumEvens(numbers));
+
+
+
+
+const num = [1, 2, 4, 8, 16, 100];
+
+const addNum = (pick => {
+  let totalNum = 0;
+
+  for (let x = 0; x < pick.length; x++) {
+    if (pick[x] % 2 === 0)
+      totalNum = totalNum + pick[x];
+  }
+  return totalNum;
+})
+console.log(addNum(num));
