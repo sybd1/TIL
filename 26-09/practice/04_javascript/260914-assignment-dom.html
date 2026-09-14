@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM 종합 실습</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px 80px;
+            color: #222;
+            font-family: Arial, "Noto Sans KR", sans-serif;
+            line-height: 1.6;
+            background: #f5f7fb;
+        }
+
+        h1 {
+            margin-bottom: 8px;
+        }
+
+        h2 {
+            margin-top: 0;
+            font-size: 21px;
+        }
+
+        button,
+        input,
+        select {
+            padding: 9px 12px;
+            font-size: 15px;
+        }
+
+        button {
+            border: 0;
+            border-radius: 6px;
+            color: white;
+            background: #315efb;
+            cursor: pointer;
+        }
+
+        button.secondary {
+            background: #596275;
+        }
+
+        button.danger {
+            background: #d63031;
+        }
+
+        .description {
+            margin-top: 0;
+            color: #555;
+        }
+
+        .problem {
+            margin-top: 28px;
+            padding: 24px;
+            border: 1px solid #dfe4ea;
+            border-radius: 12px;
+            background: white;
+        }
+
+        .requirements {
+            padding: 14px 18px 14px 36px;
+            border-radius: 8px;
+            background: #f1f4ff;
+        }
+
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 16px 0;
+        }
+
+        .result {
+            min-height: 42px;
+            margin-top: 14px;
+            padding: 10px 12px;
+            border: 1px dashed #a4b0be;
+            border-radius: 6px;
+            background: #fafafa;
+        }
+
+        /* 문제 1 */
+        #product-list {
+            display: flex;
+            gap: 10px;
+            padding: 0;
+            list-style: none;
+        }
+
+        #product-list li {
+            padding: 12px 18px;
+            border: 2px solid #dfe4ea;
+            border-radius: 8px;
+        }
+
+        #product-list li.matched {
+            border-color: #315efb;
+            color: #1742d0;
+            background: #eaf0ff;
+            font-weight: bold;
+        }
+
+        /* 문제 2 */
+        #course-steps {
+            display: flex;
+            gap: 8px;
+            padding: 18px;
+            border: 2px solid #dfe4ea;
+            list-style: none;
+        }
+
+        #course-steps li {
+            flex: 1;
+            padding: 12px;
+            border-radius: 6px;
+            text-align: center;
+            background: #f1f2f6;
+        }
+
+        #course-steps .current {
+            color: white;
+            background: #315efb;
+        }
+
+        #course-steps .edge {
+            outline: 3px solid #ffa502;
+        }
+
+        /* 문제 3 */
+        #todo-list {
+            padding-left: 24px;
+        }
+
+        #todo-list li {
+            margin: 6px 0;
+            padding: 8px;
+            border-bottom: 1px solid #dfe4ea;
+        }
+
+        /* 문제 4 */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .product-card {
+            padding: 16px;
+            border: 2px solid #dfe4ea;
+            border-radius: 8px;
+        }
+
+        .product-card.selected {
+            border-color: #2ed573;
+            background: #effff4;
+        }
+
+        /* 문제 5 */
+        #profile-card {
+            width: 280px;
+            padding: 20px;
+            border: 2px solid #315efb;
+            border-radius: 12px;
+            background: white;
+            transition: 0.2s;
+        }
+
+        #profile-card.dark {
+            border-color: #111;
+            color: white;
+            background: #2f3542;
+        }
+
+        #profile-card.compact {
+            width: 220px;
+            padding: 10px;
+        }
+
+        @media (max-width: 650px) {
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>DOM 종합 실습</h1>
+    <p class="description">
+        HTML과 CSS는 작성되어 있습니다. 각 문제의 script 영역에 DOM 코드만 작성하세요.
+    </p>
+
+    <section class="problem">
+        <h2>문제 1. 상품 이름 검색하기</h2>
+        <ul class="requirements">
+            <li>검색 버튼을 누르면 input의 현재 입력값을 가져옵니다.</li>
+            <li>입력값의 앞뒤 공백을 제거하고 소문자로 바꿉니다.</li>
+            <li><code>querySelectorAll</code>로 모든 상품 요소를 선택합니다.</li>
+            <li>상품 이름에 검색어가 포함되면 <code>matched</code> 클래스를 추가하고, 포함되지 않으면 제거합니다.(for...of / includes 사용)</li>
+            <li>일치한 상품 개수를 <code>#search-result</code>의 텍스트로 출력합니다.</li>
+            <li>빈 검색어이면 모든 상품의 <code>matched</code> 클래스를 제거하고 결과에 안내 문구를 출력합니다.</li>
+        </ul>
+
+        <div class="controls">
+            <input type="text" id="search-input" placeholder="상품명을 입력하세요">
+            <button onclick="searchProducts();">검색</button>
+        </div>
+
+        <ul id="product-list">
+            <li class="product">키보드</li>
+            <li class="product">무선 마우스</li>
+            <li class="product">모니터</li>
+            <li class="product">마우스 패드</li>
+        </ul>
+        <p id="search-result" class="result">검색 결과가 여기에 표시됩니다.</p>
+
+        <script>
+            function searchProducts() {
+                const $searchInput = document.getElementById('search-input');
+                const searchValue = $searchInput.value;
+                const filterSearchValue = searchValue.trim().toLowerCase();
+                const $productList = document.querySelectorAll('.product');
+                const $searchResult = document.getElementById('search-result');
+
+                if (filterSearchValue === '') {
+                    $productList.forEach((product) => {
+                        product.classList.remove('matched');
+                    });
+
+                    $searchResult.textContent = '존재하지 않는 상품입니다.';
+                    return;
+                }
+
+                let count = 0;
+
+                for (const product of $productList) {
+                    if (product.textContent.includes(filterSearchValue)) {
+                        product.classList.add('matched');
+                        count += 1;
+                    } else {
+                        product.classList.remove('matched');
+                    }
+                }
+                $searchResult.textContent = `${count}개 일치합니다.`
+            }
+        </script>
+    </section>
+
+    <section class="problem">
+        <h2>문제 2. 기준 요소의 가족 관계 찾기</h2>
+        <ul class="requirements">
+            <li><code>#current-step</code> 요소를 기준으로 탐색합니다.</li>
+            <li>부모 요소를 찾아 테두리 색상을 파란색으로 변경합니다.(borderColor)</li>
+            <li>부모의 첫 번째 자식과 마지막 자식에 <code>edge</code> 클래스를 추가합니다.</li>
+            <li>기준 요소의 이전 형제와 다음 형제의 텍스트를 가져옵니다.</li>
+            <li>두 형제의 텍스트를 <code>#traversal-result</code>에 출력합니다.</li>
+            <li>처음부터 모든 요소를 각각 선택하지 말고 부모·자식·형제 탐색 프로퍼티를 사용합니다.</li>
+        </ul>
+
+        <ol id="course-steps">
+            <li>HTML</li>
+            <li>CSS</li>
+            <li id="current-step" class="current">JavaScript</li>
+            <li>TypeScript</li>
+            <li>React</li>
+        </ol>
+        <button onclick="showRelations();">관계 확인</button>
+        <p id="traversal-result" class="result">이전 단계와 다음 단계가 여기에 표시됩니다.</p>
+
+        <script>
+            function showRelations() {
+                // 코드 작성
+            }
+        </script>
+    </section>
+
+    <section class="problem">
+        <h2>문제 3. 할 일 목록 관리하기</h2>
+        <ul class="requirements">
+            <li>추가 버튼을 누르면 input의 현재 입력값을 가져옵니다.</li>
+            <li>빈 문자열이거나 공백뿐이면 항목을 추가하지 않습니다.</li>
+            <li><code>createElement</code>로 li 요소를 만들고 <code>textContent</code>로 내용을 넣습니다.</li>
+            <li>만든 li를 <code>#todo-list</code>의 마지막 자식으로 추가합니다.</li>
+            <li>추가한 뒤 input의 값을 비웁니다.</li>
+            <li>마지막 삭제 버튼은 마지막 자식 하나만 삭제합니다. 목록이 비어 있으면 아무 작업도 하지 않습니다.</li>
+        </ul>
+
+        <div class="controls">
+            <input type="text" id="todo-input" placeholder="할 일을 입력하세요">
+            <button onclick="addTodo();">추가</button>
+            <button class="secondary" onclick="removeLastTodo();">마지막 삭제</button>
+        </div>
+
+        <ul id="todo-list">
+            <li>DOM 복습하기</li>
+            <li>실습 문제 풀기</li>
+        </ul>
+
+        <script>
+            function addTodo() {
+                // 코드 작성
+            }
+
+            function removeLastTodo() {
+                // 코드 작성
+            }
+        </script>
+    </section>
+
+    <section class="problem">
+        <h2>문제 4. dataset으로 선택 상품 표시하기</h2>
+        <ul class="requirements">
+            <li>상품 카드의 선택 버튼을 누르면 상품 번호가 <code>selectProduct</code> 함수에 전달됩니다.</li>
+            <li>전달받은 상품 번호와 속성 선택자를 사용하여 해당 상품 카드를 선택합니다.</li>
+            <li>선택한 카드의 <code>dataset</code>에서 상품 번호, 상품명, 가격을 가져옵니다.</li>
+            <li>모든 상품 카드의 <code>selected</code> 클래스와 <code>data-selected</code> 어트리뷰트를 먼저 제거합니다.</li>
+            <li>선택한 카드에만 <code>selected</code> 클래스를 추가합니다.</li>
+            <li>선택한 카드에 <code>data-selected="true"</code> 어트리뷰트를 설정합니다.</li>
+            <li>상품 정보를 <code>#selected-product</code>에 출력합니다.</li>
+        </ul>
+
+        <div class="product-grid">
+            <article class="product-card" data-product-id="p-101" data-product-name="키보드" data-price="50000">
+                <h3>키보드</h3>
+                <p>50,000원</p>
+                <button onclick="selectProduct('p-101');">선택</button>
+            </article>
+            <article class="product-card" data-product-id="p-102" data-product-name="마우스" data-price="30000">
+                <h3>마우스</h3>
+                <p>30,000원</p>
+                <button onclick="selectProduct('p-102');">선택</button>
+            </article>
+            <article class="product-card" data-product-id="p-103" data-product-name="모니터" data-price="200000">
+                <h3>모니터</h3>
+                <p>200,000원</p>
+                <button onclick="selectProduct('p-103');">선택</button>
+            </article>
+        </div>
+        <p id="selected-product" class="result">선택한 상품 정보가 여기에 표시됩니다.</p>
+
+        <script>
+            function selectProduct(productId) {
+                // 코드 작성
+            }
+        </script>
+    </section>
+
+    <section class="problem">
+        <h2>문제 5. 프로필 카드 꾸미기</h2>
+        <ul class="requirements">
+            <li>적용 버튼을 누르면 이름 input과 소개 textarea의 현재값을 읽습니다.</li>
+            <li>입력한 이름과 소개를 프로필 카드 안의 알맞은 요소에 <code>textContent</code>로 표시합니다.</li>
+            <li>색상 input의 값으로 카드의 테두리 색상을 변경합니다.</li>
+            <li>크기 select가 compact이면 <code>compact</code> 클래스를 추가하고, normal이면 제거합니다.</li>
+            <li>다크 모드 버튼을 누를 때마다 <code>dark</code> 클래스를 토글합니다.</li>
+            <li>카드가 현재 dark 클래스를 가지고 있는지 확인하여 버튼의 텍스트를 변경합니다.</li>
+        </ul>
+
+        <div class="controls">
+            <input type="text" id="profile-name-input" value="홍길동" placeholder="이름">
+            <textarea id="profile-message-input" rows="2" placeholder="소개">프론트엔드 개발을 공부하고 있습니다.</textarea>
+            <input type="color" id="profile-color-input" value="#315efb">
+            <select id="profile-size-select">
+                <option value="normal">기본 크기</option>
+                <option value="compact">작은 크기</option>
+            </select>
+            <button onclick="applyProfile();">프로필 적용</button>
+            <button id="dark-mode-button" class="secondary" onclick="toggleDarkMode();">다크 모드 켜기</button>
+        </div>
+
+        <article id="profile-card">
+            <h3 id="profile-name">홍길동</h3>
+            <p id="profile-message">프론트엔드 개발을 공부하고 있습니다.</p>
+        </article>
+
+        <script>
+            function applyProfile() {
+                // 코드 작성
+            }
+
+            function toggleDarkMode() {
+                // 코드 작성
+            }
+        </script>
+    </section>
+</body>
+
+</html>
