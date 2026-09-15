@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event 종합 실습</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px 80px;
+            color: #222;
+            font-family: Arial, "Noto Sans KR", sans-serif;
+            line-height: 1.6;
+            background: #f5f7fb;
+        }
+
+        h1 {
+            margin-bottom: 8px;
+        }
+
+        h2 {
+            margin-top: 0;
+            font-size: 21px;
+        }
+
+        button,
+        input {
+            padding: 9px 12px;
+            font-size: 15px;
+        }
+
+        button {
+            border: 0;
+            border-radius: 6px;
+            color: white;
+            background: #315efb;
+            cursor: pointer;
+        }
+
+        button.secondary {
+            background: #596275;
+        }
+
+        button.danger {
+            background: #d63031;
+        }
+
+        .description {
+            margin-top: 0;
+            color: #555;
+        }
+
+        .problem {
+            margin-top: 28px;
+            padding: 24px;
+            border: 1px solid #dfe4ea;
+            border-radius: 12px;
+            background: white;
+        }
+
+        .requirements {
+            padding: 14px 18px 14px 36px;
+            border-radius: 8px;
+            background: #f1f4ff;
+        }
+
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 16px 0;
+        }
+
+        .result {
+            min-height: 42px;
+            margin-top: 14px;
+            padding: 10px 12px;
+            border: 1px dashed #a4b0be;
+            border-radius: 6px;
+            background: #fafafa;
+        }
+
+        .menu-list {
+            padding: 0;
+            list-style: none;
+        }
+
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 8px 0;
+            padding: 12px;
+            border: 1px solid #dfe4ea;
+            border-radius: 8px;
+        }
+
+        .menu-item.selected {
+            border-color: #315efb;
+            background: #eaf0ff;
+        }
+
+        .notice-link {
+            display: inline-block;
+            margin-top: 8px;
+            color: #315efb;
+        }
+
+        .modal-backdrop {
+            display: none;
+            position: fixed;
+            inset: 0;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.55);
+        }
+
+        .modal-backdrop.open {
+            display: flex;
+        }
+
+        .modal {
+            width: min(420px, 100%);
+            padding: 24px;
+            border-radius: 12px;
+            background: white;
+        }
+
+        .typing-box {
+            width: 100%;
+            padding: 12px;
+        }
+
+        .warning {
+            color: #d63031;
+        }
+
+        .success {
+            color: #198754;
+        }
+
+        .signup-form {
+            display: grid;
+            gap: 12px;
+            max-width: 480px;
+        }
+
+        .signup-form label {
+            display: grid;
+            gap: 5px;
+        }
+
+        .agreement {
+            display: flex !important;
+            grid-template-columns: none;
+            align-items: center;
+            gap: 8px !important;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Event 종합 실습</h1>
+    <p class="description">HTML과 CSS는 작성되어 있습니다. 각 문제의 script 영역에 이벤트 처리 코드를 작성하세요.</p>
+
+    <section class="problem">
+        <h2>문제 1. 클릭 이벤트 시작하고 중지하기</h2>
+        <ul class="requirements">
+            <li><code>#count-button</code>을 클릭할 때마다 횟수를 1씩 증가시켜 화면에 출력합니다.</li>
+            <li>이벤트 핸들러는 이름이 있는 함수로 작성하고 <code>addEventListener</code>로 등록합니다.</li>
+            <li>중지 버튼을 누르면 <code>removeEventListener</code>로 카운트 이벤트를 제거합니다.</li>
+        </ul>
+        <div class="controls">
+            <button id="count-button">카운트</button>
+            <button id="stop-count-button" class="danger">카운트 중지</button>
+        </div>
+        <p id="count-result" class="result">클릭 횟수: 0</p>
+        <script> // 카운트, 중지 버튼 공용으로 사용할 변수만들기
+            const $countResult = document.getElementById('count-result');
+            const $stopCountBtn = document.getElementById('stop-count-button');
+
+            const $countButton = document.getElementById('count-button');
+
+            let count = 0;
+
+            const addCountBtn = () => {
+                
+            }
+
+            $countButton.addEventListener('click', () => {
+                $countResult.textContent = `클릭 횟수: ${++count}`;
+            })
+
+            $stopCountBtn.addEventListener('click', () => {
+                $stopCountBtn.removeEventListener('');
+                $countResult.textContent = `클릭 횟수: `
+
+
+                console.log($stopCountBtn);
+            });
+
+
+
+        </script>
+    </section>
+
+    <section class="problem">
+        <h2>문제 2. 이벤트 위임으로 메뉴 선택하기</h2>
+        <ul class="requirements">
+            <li>각 버튼에 따로 이벤트를 등록하지 말고 <code>#menu-list</code>에 클릭 이벤트 하나만 등록합니다.</li>
+            <li><code>event.target.closest()</code>로 클릭한 버튼을 찾습니다.</li>
+            <li>메뉴 버튼이 아닌 곳을 클릭하면 아무 작업도 하지 않습니다.</li>
+            <li>모든 메뉴의 <code>selected</code> 클래스를 제거한 뒤 선택한 메뉴에만 추가합니다.</li>
+            <li>버튼의 <code>dataset.menuId</code>와 메뉴명을 결과 영역에 출력합니다.</li>
+        </ul>
+        <ul id="menu-list" class="menu-list">
+            <li class="menu-item"><span>대시보드</span><button class="select-menu" data-menu-id="dashboard">선택</button></li>
+            <li class="menu-item"><span>회원 관리</span><button class="select-menu" data-menu-id="members">선택</button></li>
+            <li class="menu-item"><span>상품 관리</span><button class="select-menu" data-menu-id="products">선택</button></li>
+        </ul>
+        <p id="menu-result" class="result">선택한 메뉴가 여기에 표시됩니다.</p>
+        <script>
+            // 코드 작성
+        </script>
+    </section>
+
+    <section class="problem">
+        <h2>문제 3. 기본 동작과 이벤트 전파 제어하기</h2>
+        <ul class="requirements">
+            <li>안내 열기 버튼을 누르면 배경에 <code>open</code> 클래스를 추가합니다.</li>
+            <li>어두운 배경을 클릭하면 모달이 닫히도록 합니다.</li>
+            <li>흰색 모달 내부를 클릭했을 때는 <code>stopPropagation()</code>으로 닫히지 않게 합니다.</li>
+            <li>모달 안의 링크를 클릭하면 <code>preventDefault()</code>로 페이지 이동을 막고 안내 문구를 출력합니다.</li>
+        </ul>
+        <button id="open-modal-button">안내 열기</button>
+        <p id="modal-result" class="result">링크 처리 결과가 여기에 표시됩니다.</p>
+        <div id="modal-backdrop" class="modal-backdrop">
+            <div id="modal" class="modal">
+                <h3>수업 안내</h3>
+                <p>모달 안을 클릭해도 창이 닫히면 안 됩니다.</p>
+                <a id="notice-link" class="notice-link" href="https://example.com">자세한 안내 보기</a>
+            </div>
+        </div>
+        <script>
+            // 코드 작성
+        </script>
+    </section>
+
+    <section class="problem">
+        <h2>문제 4. 키보드 입력 처리하기</h2>
+        <ul class="requirements">
+            <li><code>input</code> 이벤트가 발생할 때마다 공백을 포함한 현재 글자 수를 출력합니다.</li>
+            <li><code>keydown</code> 이벤트에서 <code>event.key</code>가 Enter인지 확인합니다.</li>
+            <li>Enter를 누르면 입력값의 앞뒤 공백을 제거하여 결과 영역에 출력합니다.</li>
+            <li>빈 값이면 메시지를 출력하지 않고 안내 문구를 표시합니다.</li>
+            <li>메시지를 출력한 뒤에는 input과 글자 수를 초기화합니다.</li>
+        </ul>
+        <input id="message-input" class="typing-box" type="text" placeholder="메시지를 입력하고 Enter를 누르세요">
+        <p id="character-count">현재 글자 수: 0</p>
+        <p id="typing-result" class="result">입력 결과가 여기에 표시됩니다.</p>
+        <script>
+            // 코드 작성
+        </script>
+    </section>
+
+    <section class="problem">
+        <h2>문제 5. 회원가입 폼 검증하기</h2>
+        <ul class="requirements">
+            <li>폼의 <code>submit</code> 이벤트를 처리합니다.</li>
+            <li>이름은 앞뒤 공백을 제거했을 때 두 글자 이상이어야 합니다.</li>
+            <li>비밀번호는 여섯 글자 이상이어야 하며 약관에 동의해야 합니다.</li>
+            <li>검증에 실패하면 <code>preventDefault()</code>를 호출하고 첫 번째 오류 메시지를 출력합니다.</li>
+            <li>성공할 때도 페이지 이동을 막고 성공 메시지를 출력합니다.</li>
+        </ul>
+        <form id="signup-form" class="signup-form" action="/signup">
+            <label>이름 <input id="user-name" type="text"></label>
+            <label>비밀번호 <input id="user-password" type="password"></label>
+            <label class="agreement"><input id="terms" type="checkbox"> 이용 약관에 동의합니다.</label>
+            <button type="submit">가입하기</button>
+        </form>
+        <p id="signup-result" class="result">검증 결과가 여기에 표시됩니다.</p>
+        <script>
+            // 코드 작성
+        </script>
+    </section>
+</body>
+
+</html>

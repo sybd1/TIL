@@ -408,7 +408,20 @@
 
         <script>
             function applyProfile() {
-                // 코드 작성
+                const $profileNameInput = document.getElementById('profile-name-input');
+                const $profileMessageInput = document.getElementById('profile-message-input');
+                const $profileCardName = document.getElementById('profile-name');
+                const $profileMessage = document.getElementById('profile-message');
+                const $profileCard = document.getElementById('profile-size-select');
+                const $profileSizeSelect = document.getElementById('')
+                $profileCard.style.borderColor = 'red';
+                $profileNameInput.textContent = '$profileCardName';
+                $profileMessageInput.textContent = '$profileMessage';
+
+
+                // console.log($profileCardName);
+                // console.log($profileMessage);
+                
             }
 
             function toggleDarkMode() {
