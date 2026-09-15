@@ -279,10 +279,12 @@
                 const $currentStep = document.getElementById('current-step')
                 const currentStepParent = $currentStep.parentElement;
                 currentStepParent.style.borderColor = 'blue';
+
                 const parentFirst = currentStepParent.firstElementChild;
                 const parentLast = currentStepParent.lastElementChild;
                 parentFirst.classList.add('edge');
                 parentLast.classList.add('edge');
+                
                 const beforeBro = $currentStep.previousElementSibling;
                 const afterBro = $currentStep.nextElementSibling;
                 const $traversalResult = document.getElementById('traversal-result');

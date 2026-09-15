@@ -182,28 +182,22 @@
             <button id="stop-count-button" class="danger">카운트 중지</button>
         </div>
         <p id="count-result" class="result">클릭 횟수: 0</p>
-        <script> // 카운트, 중지 버튼 공용으로 사용할 변수만들기
+        <script>
+            const $countButton = document.getElementById('count-button');
             const $countResult = document.getElementById('count-result');
             const $stopCountBtn = document.getElementById('stop-count-button');
 
-            const $countButton = document.getElementById('count-button');
-
             let count = 0;
 
-            const addCountBtn = () => {
-                
+            const handleCount = () => {
+                count++
+                $countResult.textContent = `클릭 횟수: ${count}`;
             }
 
-            $countButton.addEventListener('click', () => {
-                $countResult.textContent = `클릭 횟수: ${++count}`;
-            })
+            $countButton.addEventListener('click', handleCount);
 
             $stopCountBtn.addEventListener('click', () => {
-                $stopCountBtn.removeEventListener('');
-                $countResult.textContent = `클릭 횟수: `
-
-
-                console.log($stopCountBtn);
+                $countButton.removeEventListener('click', handleCount);
             });
 
 
@@ -227,7 +221,33 @@
         </ul>
         <p id="menu-result" class="result">선택한 메뉴가 여기에 표시됩니다.</p>
         <script>
-            // 코드 작성
+            const $menuList = document.getElementById('menu-list');
+            const $menuResult = document.getElementById('menu-result');
+
+            $menuList.addEventListener('click', (e) => {
+                // 클릭된 지점으로부터 부모 방향으로 .select-menu찾기
+                const $button = e.target.closest('.select-menu');
+
+                // 버블링으로 인해 다른 곳이 눌러지지 않게 하기
+                if (!$button) return;
+
+                // 모든 menu-item요소에서 파랗게 만드는 selected CSS 삭제
+                const $menuItems = document.querySelectorAll('.menu-item');
+                $menuItems.forEach($item => $item.classList.remove('selected'));
+
+                // 선택 버튼 누르면 li 배경이 파랗게 변한다.
+                const $selectedItem = $button.closest('.menu-item');
+                $selectedItem.classList.add('selected');
+
+                // dataset으로 태그 안 정보를 가지고와 텍스트로 꺼낸다.
+                const menuId = $button.dataset.menuId;
+                const menuName = $selectedItem.querySelector('span').textContent;
+
+                // 버튼을 누르면 텍스트로 반환한 결과를 보여준다.
+                $menuResult.textContent = `선택한 메뉴: ${menuName} (ID: ${menuId})`;
+            });
+
+
         </script>
     </section>
 
@@ -249,7 +269,30 @@
             </div>
         </div>
         <script>
-            // 코드 작성
+            const $openModalBtn = document.getElementById('open-modal-button');
+            const $modalBackdrop = document.getElementById('modal-backdrop');
+            const $modal = document.getElementById('modal');
+            const $noticeLink = document.getElementById('notice-link');
+            const $modalResult = document.getElementById('modal-result');
+
+            $openModalBtn.addEventListener('click', (e) => {
+                // 클릭하면 CSS로 만들어진 open 모달 창이 뜬다.
+                $modalBackdrop.classList.add('open');
+            });
+            $modalBackdrop.addEventListener('click', () => {
+                // 아무곳이나 클릭하면 모달 창이 사라진다.
+                $modalBackdrop.classList.remove('open');
+            });
+            // stopPropagation 메서드로 버블링을 막는다.
+            $modal.addEventListener('click', (e) => {
+                e.stopPropagation();
+            });
+            // preventDefault 메서드로 링크를 눌러도 새로고침이 되지 않게 하고, 결과창에 텍스트 출력.
+            $noticeLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                $modalResult.textContent = '안내 페이지 이동이 차단되었습니다.';
+            });
+
         </script>
     </section>
 
@@ -266,7 +309,33 @@
         <p id="character-count">현재 글자 수: 0</p>
         <p id="typing-result" class="result">입력 결과가 여기에 표시됩니다.</p>
         <script>
-            // 코드 작성
+
+            const $messageInput = document.getElementById('message-input');
+            const $characterCount = document.getElementById('character-count');
+            const $typingResult = document.getElementById('typing-result');
+
+            // 타이핑 할 때마다 input 이벤트로 글자수 실시간 감지해서 반영.
+            $messageInput.addEventListener('input', (e) => {
+                $characterCount.textContent = `현재 글자 수: ${e.target.value.length}`;
+            })
+
+            $messageInput.addEventListener('keydown', (e) => {
+                // 만약 키가 눌려진 순간 'Enter'키라면(텍스트 나열,양 끝 공백 제거)
+                if (e.key === 'Enter') {
+                    const text = e.target.value.trim();
+                    // 만약 공백이라면, 텍스트 출력.
+                    if (text === '') {
+                        $typingResult.textContent = '값을 입력해 주세요.';
+                        return;
+                        // 사용자가 타이핑한 입력물 text 변수가 받아서 출력
+                        // 전송이 완료된 후, 다음 입력을 위해 글자 수 초기화
+                    }
+                    $typingResult.textContent = `입력한 메시지: ${text}`;
+                    $messageInput.value = '';
+                    $characterCount.textContent = '현재 글자 수: 0';
+                }
+            });
+
         </script>
     </section>
 
@@ -287,7 +356,31 @@
         </form>
         <p id="signup-result" class="result">검증 결과가 여기에 표시됩니다.</p>
         <script>
-            // 코드 작성
+            const $signupForm = document.getElementById('signup-form');
+            const $userName = document.getElementById('user-name');
+            const $userPassword = document.getElementById('user-password');
+            const $terms = document.getElementById('terms');
+            const $signupResult = document.getElementById('signup-result');
+
+            // submit 이벤트 처리. 새로고침 금지.
+            $signupForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                // 이름창에 입력 받을 때, 앞뒤 공백제거, 두 글자 이상 조건. 조건에 맞지 않으면 텍스트 출력.
+                if ($userName.value.trim().length < 2) {
+                    $signupResult.textContent = '이름은 2글자 이상 입력하세요.';
+                    return;
+                }   // 위와 동일한 문법의 비밀번호 조건식. 앞뒤 공백 제거 조건만 빠져있다.
+                if ($userPassword.value.length < 6) {
+                    $signupResult.textContent = '비밀번호는 6글자 이상 입력하세요.'
+                    return;
+                }   // 논리 연산자 !를 사용해 체크하지 않았으면 텍스트를 출력. 
+                if (!$terms.checked) {
+                    $signupResult.textContent = '이용 약관에 동의해 주세요.';
+                    return;
+                }
+                $signupResult.textContent = '회원가입이 성공적으로 완료되었습니다.';
+            });
+
         </script>
     </section>
 </body>
