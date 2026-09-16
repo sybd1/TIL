@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        function Nmixx({ name = '귀여운 멤버들', age = '귀여운 나이', anything }) {
+            return (
+                <>
+                    <h2>저는 {age}년생 {name}입니다. 잘 부탁드립니다~ {anything}</h2>
+                </>
+            );
+        }
+
+        function App() {
+            const name1 = '윤아';
+            const name2 = '지우';
+            const age1 = '04'
+            const age2 = '05'
+
+            return (
+                <>
+                    <Nmixx name={name1} age={age1}>다시 뛰어 들어~ 난~</Nmixx>
+                    <Nmixx name={name2} age={age2}>벽 앞에 새길래 난 너와 내 everything~</Nmixx>
+                </>
+            );
+        }
+    
+        ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+    </script>
+</body>
+
+</html>

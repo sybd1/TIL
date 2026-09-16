@@ -120,3 +120,19 @@ const jiwoo = {
 
 const { name, personality } = jiwoo;
 console.log(`Hi I'm ${name}. I think I'm very ${personality} `);
+
+- setTimeout
+const timerId = setTimeout((name) => {
+    console.log(`${name}, 일어나 3초나 지났어`);
+}, 3000, "지우야");
+
+- setInterval
+let count = 1
+const intervalId = setInterval(() => {
+    console.log(`일어나! 해원아! ${count}초 지나가고 있어!`);
+
+    if (count++ === 10) {
+        clearInterval(intervalId);
+        console.log('일어났구나 오해원...');
+    }
+},1000);
