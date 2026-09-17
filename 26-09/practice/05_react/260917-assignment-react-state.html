@@ -79,8 +79,10 @@
         // 문제 2. 입력 내용 실시간 미리 보기
         function ProfilePreview() {
             // TODO 1: name과 introduction을 각각 빈 문자열 state로 만드세요.
-            const [name, setName] = useState();
-            const [introduction, setIntroduction] = useState();
+            const [name, setName] = useState('');
+            const [introduction, setIntroduction] = useState('');
+
+            
 
             return (
                 <section className="problem">
@@ -97,6 +99,8 @@
                             <input
                                 type="text"
                                 placeholder="이름을 입력하세요"
+                                value={name}
+                                onChange={e => setName(e.target.value)}
                             />
                         </label>
                         <label>
@@ -104,12 +108,14 @@
                             <input
                                 type="text"
                                 placeholder="소개를 입력하세요"
+                                value={introduction}
+                                onChange={e => setIntroduction(e.target.value)}
                             />
                         </label>
                     </div>
                     <div className="preview">
-                        <h3>{/* TODO: name을 출력하고, 비어 있으면 '이름 없음' 출력 */}</h3>
-                        <p>{/* TODO: introduction을 출력하고, 비어 있으면 '소개를 입력해 주세요.' 출력 */}</p>
+                        <h3>{name === "" ? "이름 없음" : name}</h3>
+                        <p>{introduction === "" ? "소개를 입력해 주세요" : introduction}</p>
                     </div>
                 </section>
             );
@@ -118,16 +124,29 @@
         // 문제 3. 객체 state로 회원 정보 관리하기
         function SignupForm() {
             // TODO 1: username과 email을 가진 form 객체 state를 만드세요.
+            const [form, setForm] = useState({
+                username: '',
+                email: ''
+
+            });
 
             const handleChange = (event) => {
                 // TODO 2: event.target에서 name과 value를 꺼내세요.
                 // TODO 3: 기존 form을 복사하고 [name]에 value를 덮어쓰세요.
-            };
+                const { name, value } = event.target;
+
+                setForm({
+                    ...form,
+                    [name]: value
+                });
+            }
 
             const handleSignup = () => {
                 // TODO 4: 아이디와 이메일을 alert로 출력하세요.
                 // TODO 5: form을 처음의 빈 값으로 초기화하세요.
-            };
+                alert(`아이디: ${form.username} \n 이메일: ${form.email}`);
+                setForm({username:'', email:''});
+            }
 
             return (
                 <section className="problem">
@@ -144,17 +163,23 @@
                             아이디
                             <input
                                 type="text"
+                                name="username"
                                 placeholder="이름을 입력하세요"
+                                value={form.username}
+                                onChange={handleChange}
                             />
                         </label>
                         <label>
                             이메일
                             <input
                                 type="email"
+                                name="email"
                                 placeholder="이메일을 입력하세요"
+                                value={form.email}
+                                onChange={handleChange}
                             />
                         </label>
-                        <button>가입하기</button>
+                        <button onClick={handleSignup}>가입하기</button>
                     </div>
                 </section>
             );
