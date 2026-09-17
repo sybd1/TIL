@@ -189,16 +189,31 @@
 
             let count = 0;
 
-            const handleCount = () => {
+            const handel = () => {
                 count++
                 $countResult.textContent = `클릭 횟수: ${count}`;
             }
 
-            $countButton.addEventListener('click', handleCount);
+            $countButton.addEventListener('click', handel);
 
             $stopCountBtn.addEventListener('click', () => {
-                $countButton.removeEventListener('click', handleCount);
-            });
+                $countButton.removeEventListener('click', handel);
+            })
+
+
+
+            // let count = 0;
+
+            // const handleCount = () => {
+            //     count++
+            //     $countResult.textContent = `클릭 횟수: ${count}`;
+            // }
+
+            // $countButton.addEventListener('click', handleCount);
+
+            // $stopCountBtn.addEventListener('click', () => {
+            //     $countButton.removeEventListener('click', handleCount);
+            // });
 
 
 
@@ -223,6 +238,7 @@
         <script>
             const $menuList = document.getElementById('menu-list');
             const $menuResult = document.getElementById('menu-result');
+            const $menuItems = document.querySelectorAll('.menu-item');
 
             $menuList.addEventListener('click', (e) => {
                 // 클릭된 지점으로부터 부모 방향으로 .select-menu찾기
@@ -231,8 +247,7 @@
                 // 버블링으로 인해 다른 곳이 눌러지지 않게 하기
                 if (!$button) return;
 
-                // 모든 menu-item요소에서 파랗게 만드는 selected CSS 삭제
-                const $menuItems = document.querySelectorAll('.menu-item');
+                // 모든 menu-item요소에서 파랗게 만드는 selected CSS 삭제                
                 $menuItems.forEach($item => $item.classList.remove('selected'));
 
                 // 선택 버튼 누르면 li 배경이 파랗게 변한다.
