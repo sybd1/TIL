@@ -38,23 +38,23 @@
         // 문제 1. 수량 조절하기
         function QuantityCounter() {
             // TODO: 초기값이 0인 quantity state를 만드세요.
-            const [numbur, setNumber] = useState(0);
+            const [quantity, setQuantity] =useState(0);
 
             const handleIncrease = () => {
                 // TODO: quantity를 1 증가시키세요.
-                setNumber((quantity) => quantity + 1);
+                setQuantity(quantity + 1)
             };
 
             const handleDecrease = () => {
                 // TODO: quantity가 0보다 클 때만 1 감소시키세요.
-                if (numbur > 0) {
-                    setNumber(numbur - 1);
+                if (quantity > 0) {
+                    setQuantity(quantity - 1)
                 }
             };
 
             const handleReset = () => {
                 // TODO: quantity를 0으로 변경하세요.
-                setNumber((quantity) => 0);
+                setQuantity(0);
             };
 
             return (
@@ -66,7 +66,7 @@
                         <li>감소 버튼은 수량이 0보다 클 때만 1 감소시킵니다.</li>
                         <li>초기화 버튼은 수량을 0으로 변경합니다.</li>
                     </ul>
-                    <h3>현재 수량: {numbur}</h3>
+                    <h3>현재 수량: {quantity}</h3>
                     <div className="controls">
                         <button onClick={handleDecrease}>-1</button>
                         <button onClick={handleIncrease}>+1</button>
@@ -112,8 +112,8 @@
                         </label>
                     </div>
                     <div className="preview">
-                        <h3>{name === "" ? "이름 없음" : name}</h3>
-                        <p>{introduction === "" ? "소개를 입력해 주세요" : introduction}</p>
+                        <h3>{name === "" ? "이름을 입력하세요" : name}</h3>
+                        <p>{introduction === "" ? "소개를 입력하세요" : introduction} </p>
                     </div>
                 </section>
             );
@@ -122,29 +122,16 @@
         // 문제 3. 객체 state로 회원 정보 관리하기
         function SignupForm() {
             // TODO 1: username과 email을 가진 form 객체 state를 만드세요.
-            const [form, setForm] = useState({
-                username: '',
-                email: ''
-
-            });
 
             const handleChange = (event) => {
                 // TODO 2: event.target에서 name과 value를 꺼내세요.
                 // TODO 3: 기존 form을 복사하고 [name]에 value를 덮어쓰세요.
-                const { name, value } = event.target;
-
-                setForm({
-                    ...form,
-                    [name]: value
-                });
-            }
+            };
 
             const handleSignup = () => {
                 // TODO 4: 아이디와 이메일을 alert로 출력하세요.
                 // TODO 5: form을 처음의 빈 값으로 초기화하세요.
-                alert(`아이디: ${form.username} \n 이메일: ${form.email}`);
-                setForm({username:'', email:''});
-            }
+            };
 
             return (
                 <section className="problem">
@@ -161,23 +148,17 @@
                             아이디
                             <input
                                 type="text"
-                                name="username"
                                 placeholder="이름을 입력하세요"
-                                value={form.username}
-                                onChange={handleChange}
                             />
                         </label>
                         <label>
                             이메일
                             <input
                                 type="email"
-                                name="email"
                                 placeholder="이메일을 입력하세요"
-                                value={form.email}
-                                onChange={handleChange}
                             />
                         </label>
-                        <button onClick={handleSignup}>가입하기</button>
+                        <button>가입하기</button>
                     </div>
                 </section>
             );

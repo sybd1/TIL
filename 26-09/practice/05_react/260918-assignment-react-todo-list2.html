@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Todo List 실습</title>
+
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            margin: 0;
+            padding: 60px 20px;
+            color: #222;
+            font-family: Arial, "Noto Sans KR", sans-serif;
+            background: #f4f6fa;
+        }
+
+        #root {
+            width: min(680px, 100%);
+        }
+
+        .practice-guide,
+        .todo-app {
+            padding: 24px;
+            border: 1px solid #dfe4ea;
+            border-radius: 14px;
+            background: white;
+        }
+
+        .practice-guide {
+            margin-bottom: 24px;
+        }
+
+        .practice-guide h1 {
+            margin-top: 0;
+        }
+
+        .requirements {
+            padding: 16px 18px 16px 38px;
+            border-radius: 8px;
+            line-height: 1.7;
+            background: #f1f4ff;
+        }
+
+        .todo-app h2 {
+            margin-top: 0;
+        }
+
+        .input-area {
+            display: flex;
+            gap: 8px;
+        }
+
+        .input-area input {
+            flex: 1;
+            min-width: 0;
+            padding: 11px;
+            border: 1px solid #ced6e0;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 9px 14px;
+            border: 0;
+            border-radius: 6px;
+            color: white;
+            background: #315efb;
+            cursor: pointer;
+        }
+
+        .todo-list {
+            padding: 0;
+            list-style: none;
+        }
+
+        .todo-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            margin-top: 10px;
+            padding: 12px 14px;
+            border: 1px solid #dfe4ea;
+            border-radius: 8px;
+        }
+
+        .todo-item button {
+            background: #d63031;
+        }
+
+        .count {
+            color: #596275;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState } = React;
+
+        // 할 일 한 개를 화면에 표시하는 자식 컴포넌트
+        function TodoItem({ todo, onRemove }) {
+            return (
+                <li className="todo-item">
+                    {todo.text}
+                    <span>할 일 내용</span>
+                    <button onClick={() => onRemove(todo.id)}>
+                        삭제
+                    </button>
+                </li>
+            );
+        }
+
+        // 할 일 목록과 상태를 관리하는 부모 컴포넌트
+        function TodoList() {
+
+            const [inputText, setInputText] = useState('');
+
+            const [todos, setTodos] = useState([
+                { id: 1, text: 'React 복습하기' },
+                { id: 2, text: 'Todo List 완성하기' }
+            ])
+
+            const [nextId, setNextId] = useState(3);
+
+            const handleChange = (event) => {
+                setInputText(event.target.value)
+            };
+
+            const handleAdd = () => {
+                if (inputText.trim() === '') return;
+
+                const newList = { id: nextId, text: inputText };
+
+                setTodos([...todos, newList]);
+
+                setNextId(nextId + 1);
+                setInputText('');
+            };
+
+            const handleRemove = (id) => {
+
+                const filterText = todos.filter(todo => todo.id !== id)
+                setTodos(filterText);
+            };
+
+            return (
+                <>
+                    <section className="practice-guide">
+                        <h1>React Todo List 실습</h1>
+
+                        <ol className="requirements">
+                            <li>
+                                input의 값은 <code>inputText</code> state로
+                                관리합니다.
+                            </li>
+                            <li>
+                                할 일 목록은 객체 배열 형태의
+                                <code>todos</code> state로 관리합니다.
+                            </li>
+                            <li>
+                                추가 버튼을 누르면 새로운 할 일을 기존 목록
+                                뒤에 추가합니다.
+                            </li>
+                            <li>
+                                공백만 입력한 경우에는 할 일을 추가하지
+                                않습니다.
+                            </li>
+                            <li>
+                                <code>map()</code>으로 목록을 렌더링하고
+                                각 항목에 고유한 <code>key</code>를 지정합니다.
+                            </li>
+                            <li>
+                                삭제 버튼을 누르면 <code>filter()</code>로
+                                해당 할 일을 제외합니다.
+                            </li>
+                            <li>
+                                할 일 한 개의 화면은 자식 컴포넌트인
+                                <code>TodoItem</code>이 담당합니다.
+                            </li>
+                            <li>
+                                부모는 자식에게 <code>todo</code>와
+                                <code>handleRemove</code>를 props로 전달합니다.
+                            </li>
+                            <li>
+                                자식은 삭제 버튼을 클릭하면 전달받은 함수에
+                                <code>todo.id</code>를 전달합니다.
+                            </li>
+                        </ol>
+                    </section>
+
+                    <main className="todo-app">
+                        <h2>오늘의 할 일</h2>
+
+                        <div className="input-area">
+                            <input
+                                type="text"
+                                placeholder="할 일을 입력하세요"
+                                value={inputText}
+                                onChange={handleChange}
+                            />
+                            <button onClick={handleAdd}>
+                                추가
+                            </button>
+                        </div>
+                        <p className="count">
+                            남은 할 일: {todos.length}
+                        </p>
+
+                        <ul className="todo-list">
+                            {todos.map(todo => (
+                                <TodoItem
+                                    key={todo.id}
+                                    todo={todo}
+                                    onRemove={handleRemove}
+                                />
+                            ))}
+                        </ul>
+                    </main>
+                </>
+            );
+        }
+
+        ReactDOM
+            .createRoot(document.getElementById('root'))
+            .render(<TodoList />);
+    </script>
+</body>
+
+</html>
