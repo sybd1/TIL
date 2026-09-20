@@ -134,3 +134,16 @@ const addNum = (pick => {
   return totalNum;
 })
 console.log(addNum(num));
+
+
+// const myElement = <div id="box">Hello</div>;
+
+
+const myElement = document.createElement('div');
+
+myElement.id = 'box';
+
+myElement.textContent = 'Hello';
+
+document.body.appendChild(myElement);
+
