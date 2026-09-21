@@ -217,7 +217,7 @@
             useEffect(() => {
                 inputRef.current.focus();
             }, []);
-            
+
             // TODO 4. 처음 화면이 나타난 뒤 이름 input에 포커스가 가도록 useEffect를 작성하세요.
 
 
@@ -268,15 +268,26 @@
             // TODO 1. searchProducts 함수를 useCallback으로 만드세요.
             //         함수는 전달받은 검색어를 query state에 저장합니다.
             //         검색과 관계없는 clickCount가 바뀌어도 함수 참조가 유지되도록 의존성을 지정하세요.
-            const searchProducts = (nextQuery) => {
+            const searchProducts = useCallback((nextQuery) => {
                 setQuery(nextQuery);
-            };
+            }, []);
 
             // TODO 2. filteredProducts를 useMemo로 계산하세요.
             //         query가 바뀔 때만 PRODUCTS를 filter하고, 상품 이름에 query가 포함되는지 확인하세요.
             //         대소문자와 앞뒤 공백은 무시하세요.
             //         계산될 때 Console에 '상품 목록 다시 계산'을 출력하세요.
-            const filteredProducts = PRODUCTS;
+            const filteredProducts = useMemo(() => {
+                console.log('상품 목록 다시 계산');
+
+
+                const cleanQuery = query.trim().toLowerCase();
+
+                if (!cleanQuery) return PRODUCTS;
+
+                return PRODUCTS.filter(product =>
+                    product.name.toLowerCase().includes(cleanQuery)
+                );
+            }, [query]);
 
             return (
                 <section className="problem">

@@ -28,10 +28,10 @@ const products = [
     { name: '책', category: '도서' }
 ];
 
-const result2 = cart.reduce((a, b) => {
-    a[b.category] = a[b.category] ? a[b.category] + 1: 1;
+const result2 = products.reduce((a, b) => {
+    a[b.category] = a[b.category] ? a[b.category] + 1 : 1;
     return a;
-}, [])
-
+}, []);
+// 쉽지 않음...
 
 console.log(result2);
