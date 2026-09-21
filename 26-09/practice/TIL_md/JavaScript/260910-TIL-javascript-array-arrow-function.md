@@ -1,4 +1,4 @@
-## [2026-09-07] Array 배열, Arrow Function 화살표 함수, Standard built in object 표준 빌트인 객체
+## [2026-09-10] Array 배열, Arrow Function 화살표 함수, Standard built in object 표준 빌트인 객체
 
 ### 1. 오늘 배운 핵심 개념 (What I Learned)
 #### Array 배열

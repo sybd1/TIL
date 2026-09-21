@@ -1,4 +1,4 @@
-## [2026-09-07] Scope 스코프, Modern Operator, null 병합 연산자
+## [2026-09-09] Scope 스코프, Modern Operator, null 병합 연산자
 
 ### 1. 오늘 배운 핵심 개념 (What I Learned)
 #### 스코프

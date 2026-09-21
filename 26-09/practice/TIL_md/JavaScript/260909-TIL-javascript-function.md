@@ -1,4 +1,4 @@
-## [2026-09-07] JavaScript Function 함수
+## [2026-09-09] JavaScript Function 함수
 
 ### 1. 오늘 배운 핵심 개념 (What I Learned)
 #### 함수 : 특정 동작에 이름 붙여 재사용 할 수 있게 만든 코드 묶음

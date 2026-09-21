@@ -1,4 +1,4 @@
-## [2026-09-07] Node와 Element를 HTML에서 JavaScript언어로 다루는 법
+## [2026-09-14] Node와 Element를 HTML에서 JavaScript언어로 다루는 법
 
 ### 1. 오늘 배운 핵심 개념 (What I Learned)
 - Node 부모, 자식, 형제 (element가 붙지 않은 메서드는 공백, 주석까지 포함하는 property이다.)

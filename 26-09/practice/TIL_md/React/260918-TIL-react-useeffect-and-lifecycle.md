@@ -1,4 +1,4 @@
-## [2026-09-07] React Rendering List, useEffect
+## [2026-09-18] React Rendering List, useEffect
 
 ### 1. 오늘 배운 핵심 개념 (What I Learned)
 #### Rendering List

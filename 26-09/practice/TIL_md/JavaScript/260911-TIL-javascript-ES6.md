@@ -1,4 +1,4 @@
-## [2026-09-07] Class 함수, Iterable과 for...of, Spread Syntax, Destructuring 구조 분해 할당
+## [2026-09-11] Class 함수, Iterable과 for...of, Spread Syntax, Destructuring 구조 분해 할당
 
 ### 1. 오늘 배운 핵심 개념 (What I Learned)
 #### Class 함수

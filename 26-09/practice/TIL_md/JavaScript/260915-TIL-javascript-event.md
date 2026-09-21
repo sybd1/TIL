@@ -1,4 +1,4 @@
-## [2026-09-07] Event
+## [2026-09-15] Event
 
 ### 1. 오늘 배운 핵심 개념 (What I Learned)
 1. Event Handler

@@ -1,4 +1,4 @@
-## [2026-09-07] React State
+## [2026-09-17] React State
 
 ### 1. 오늘 배운 핵심 개념 (What I Learned)
 #### State

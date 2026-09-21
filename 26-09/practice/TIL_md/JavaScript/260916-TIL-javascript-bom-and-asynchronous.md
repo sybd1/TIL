@@ -1,4 +1,4 @@
-## [2026-09-07] BOM (Browser Object Model), Asynchronous 비동기 프로그래밍
+## [2026-09-16] BOM (Browser Object Model), Asynchronous 비동기 프로그래밍
 
 ### 1. 오늘 배운 핵심 개념 (What I Learned)
 #### BOM 브라우저 객체 모델

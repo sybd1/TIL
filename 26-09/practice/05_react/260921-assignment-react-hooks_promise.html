@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Hooks와 Promise 실습</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 36px 18px 80px;
+            color: #222;
+            background: #f4f6fa;
+            font-family: Arial, "Noto Sans KR", sans-serif;
+            line-height: 1.6;
+        }
+
+        h1 {
+            margin-bottom: 4px;
+        }
+
+        h2 {
+            margin-top: 0;
+            font-size: 21px;
+        }
+
+        .intro {
+            margin-top: 0;
+            color: #596275;
+        }
+
+        .problem {
+            margin-top: 24px;
+            padding: 24px;
+            border: 1px solid #dfe4ea;
+            border-radius: 12px;
+            background: #fff;
+        }
+
+        .requirements {
+            padding: 14px 18px 14px 36px;
+            border-radius: 8px;
+            background: #f1f4ff;
+        }
+
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
+            margin: 16px 0;
+        }
+
+        input,
+        button {
+            padding: 9px 11px;
+            font-size: 15px;
+        }
+
+        input {
+            min-width: 0;
+            border: 1px solid #bec7d1;
+            border-radius: 6px;
+        }
+
+        button {
+            border: 0;
+            border-radius: 6px;
+            color: #fff;
+            background: #315efb;
+            cursor: pointer;
+        }
+
+        button.secondary {
+            background: #596275;
+        }
+
+        .result {
+            min-height: 42px;
+            padding: 9px 12px;
+            border: 1px dashed #a4b0be;
+            border-radius: 6px;
+            background: #fafafa;
+        }
+
+        .hint {
+            color: #596275;
+            font-size: 14px;
+        }
+
+        ul.items {
+            padding-left: 22px;
+        }
+
+        code {
+            padding: 1px 4px;
+            border-radius: 3px;
+            background: #e9edf3;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Hooks와 Promise 실습</h1>
+    <p class="intro">문제 1·2는 필수, 문제 3은 선택 심화입니다. 문제 1은 Console에서, 문제 2·3은 화면과 Console에서 결과를 확인하세요. Promise가 낯설다면 수업의
+        <code>03_promise.html</code>을 참고해도 됩니다.
+    </p>
+
+    <section class="problem">
+        <h2>문제 1. Promise로 순서가 있는 작업 처리하기 (필수)</h2>
+        <ul class="requirements">
+            <li><code>addAfterOneSecond(number)</code>가 Promise를 반환하도록 만드세요.</li>
+            <li>1초 뒤 전달받은 숫자에 10을 더합니다. 결과가 30 이하이면 <code>resolve(result)</code>, 30을 초과하면
+                <code>reject(new Error('30을 초과했습니다.'))</code>를 호출하세요.
+            </li>
+            <li>0부터 시작하여 작업을 계속 연결합니다. 성공한 결과를 Console에 출력하고 다음 Promise를 <code>return</code>하세요.</li>
+            <li>10, 20, 30을 순서대로 출력한 뒤 다음 작업에서 실패하면 <code>.catch()</code>로 오류 메시지를 출력하세요.</li>
+            <li>성공·실패와 관계없이 마지막에 <code>.finally()</code>로 <code>작업 종료</code>를 출력하세요.</li>
+        </ul>
+        <button onclick="runPromisePractice()">Promise 실행</button>
+        <p class="hint">예상 흐름: 시작 → 약 1초마다 10, 20, 30 → 오류 메시지 → 작업 종료</p>
+    </section>
+
+    <div id="root"></div>
+
+    <script>
+        // 문제 1. 이 부분은 React가 아닌 일반 JavaScript입니다.
+        function addAfterOneSecond(number) {
+            const promise = new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    const result = number + 10;
+
+                    if (result > 30) {
+                        const e = new Error('숫자 크다. 매우. 종료하다.');
+                        return reject(e);
+                    }
+                    resolve(result);
+                }, 1000)
+            });
+            return promise;
+            // TODO 1. new Promise를 반환하세요.
+            // TODO 2. setTimeout으로 1초 뒤 number + 10을 계산하세요.
+            // TODO 3. 결과가 30을 초과하면 Error 객체로 reject하고 종료하세요.
+            // TODO 4. 그렇지 않으면 계산 결과로 resolve하세요.
+        }
+
+        function runPromisePractice() {
+            console.log('작업 시작');
+
+            addAfterOneSecond(0)
+                .then((number) => {
+                    console.log(number);
+                    return addAfterOneSecond(number);
+                })
+                .then((number) => {
+                    console.log(number);
+                    return addAfterOneSecond(number);
+                })
+                .then((number) => {
+                    console.log(number);
+                    return addAfterOneSecond(number);
+                })
+                .catch(error => {
+                    console.log(error.message);
+                })
+                .finally(() => {
+                    console.log('작업 종료')
+                })
+            // TODO 5. addAfterOneSecond(0)부터 시작하세요.
+            // TODO 6. .then()을 연결하여 10, 20, 30을 차례로 출력하세요.
+            //         각 .then()에서 다음 작업의 Promise를 return해야 합니다.
+            // TODO 7. 결과 30에서 한 번 더 작업을 연결하여 실패를 확인하세요.
+            // TODO 8. .catch()에서 error.message를 출력하세요.
+            // TODO 9. .finally()에서 '작업 종료'를 출력하세요.
+        }
+    </script>
+
+    <script type="text/babel">
+        const { useState, useEffect, useMemo, useCallback, useRef } = React;
+
+        // 문제 2. 일정 시간이 지나면 true가 되는 커스텀 Hook
+        function useDelayReady(delay) {
+            // TODO 1. 초기값이 false인 isReady state를 만드세요.
+            const [isReady, setIsReady] = useState(false);
+
+            // TODO 2. useEffect에서 delay 밀리초 후 isReady를 true로 바꾸세요.
+            //         delay가 바뀌면 isReady를 다시 false로 만들고 새 타이머를 시작하세요.
+            //         effect의 cleanup에서 이전 타이머를 clearTimeout으로 정리하세요.
+            useEffect(() => {
+                setIsReady(false);
+
+                const timer = setTimeout(() => {
+                    setIsReady(true);
+                }, delay);
+
+                return () => clearTimeout(timer);
+            }, [delay]);
+
+
+            // TODO 3. isReady를 반환하세요.
+            return isReady;
+        }
+
+        function DelayPractice() {
+            const [delay, setDelay] = useState(2000);
+            const inputRef = useRef(null);
+            const isReady = useDelayReady(delay);
+
+            useEffect(() => {
+                inputRef.current.focus();
+            }, []);
+            
+            // TODO 4. 처음 화면이 나타난 뒤 이름 input에 포커스가 가도록 useEffect를 작성하세요.
+
+
+            return (
+                <section className="problem">
+                    <h2>문제 2. 커스텀 Hook과 input 포커스 (필수)</h2>
+                    <ul className="requirements">
+                        <li><code>useDelayReady(delay)</code>가 지정한 시간 뒤 <code>true</code>를 반환하도록 완성하세요.</li>
+                        <li>시간을 바꾸면 이전 타이머를 정리하고 다시 대기 상태부터 시작하세요.</li>
+                        <li>화면이 처음 나타날 때 이름 입력칸에 자동으로 포커스를 주세요.</li>
+                        <li>이미 연결된 1초·3초 버튼을 눌러 시간이 바뀔 때 대기 상태로 돌아가는지 확인하세요.</li>
+                    </ul>
+                    <div className="controls">
+                        <input ref={inputRef} placeholder="이름을 입력하세요" />
+                        <button onClick={() => setDelay(1000)}>1초</button>
+                        <button onClick={() => setDelay(3000)}>3초</button>
+                    </div>
+                    <p className="result">
+                        현재 설정: {delay / 1000}초 / {isReady ? '준비 완료' : '기다리는 중'}
+                    </p>
+                    <p className="hint">힌트: ref는 input을 가리키고, useEffect는 포커스를 줄 시점을 정합니다. 타이머 effect의 의존성은 delay입니다.</p>
+                </section>
+            );
+        }
+
+        const PRODUCTS = [
+            { id: 1, name: '키보드' },
+            { id: 2, name: '마우스' },
+            { id: 3, name: '모니터' },
+            { id: 4, name: '노트북' },
+            { id: 5, name: '마이크' }
+        ];
+
+        // 문제 3. 부모가 전달한 함수의 참조가 바뀌는지 확인하는 자식
+        function SearchNotice({ onSearch }) {
+            useEffect(() => {
+                console.log('SearchNotice effect 실행 (첫 렌더링 또는 검색 함수 참조 변경)');
+            }, [onSearch]);
+
+            return <p className="hint">검색어를 입력하고 검색 버튼을 눌러보세요. 횟수 버튼은 검색과 관계없습니다.</p>;
+        }
+
+        function ProductSearchPractice() {
+            const [inputText, setInputText] = useState('');
+            const [query, setQuery] = useState('');
+            const [clickCount, setClickCount] = useState(0);
+
+            // TODO 1. searchProducts 함수를 useCallback으로 만드세요.
+            //         함수는 전달받은 검색어를 query state에 저장합니다.
+            //         검색과 관계없는 clickCount가 바뀌어도 함수 참조가 유지되도록 의존성을 지정하세요.
+            const searchProducts = (nextQuery) => {
+                setQuery(nextQuery);
+            };
+
+            // TODO 2. filteredProducts를 useMemo로 계산하세요.
+            //         query가 바뀔 때만 PRODUCTS를 filter하고, 상품 이름에 query가 포함되는지 확인하세요.
+            //         대소문자와 앞뒤 공백은 무시하세요.
+            //         계산될 때 Console에 '상품 목록 다시 계산'을 출력하세요.
+            const filteredProducts = PRODUCTS;
+
+            return (
+                <section className="problem">
+                    <h2>문제 3. 검색 결과와 함수 참조 기억하기 (선택 심화)</h2>
+                    <ul className="requirements">
+                        <li>입력창의 내용을 검색 버튼을 누른 시점에만 검색어로 적용하세요.</li>
+                        <li><code>useMemo</code>로 검색 결과를 기억해 검색어가 같을 때 목록을 다시 계산하지 않게 하세요.</li>
+                        <li><code>useCallback</code>으로 검색 함수를 기억해 검색과 무관한 횟수 버튼을 눌러도 자식의 effect가 다시 실행되지 않게 하세요.</li>
+                        <li>Console의 두 로그를 관찰하며 <code>useMemo</code>는 계산 결과, <code>useCallback</code>은 함수 참조를 기억한다는 차이를 확인하세요.</li>
+                    </ul>
+                    <div className="controls">
+                        <input value={inputText} onChange={e => setInputText(e.target.value)} placeholder="상품명 검색" />
+                        <button onClick={() => searchProducts(inputText)}>검색</button>
+                        <button className="secondary" onClick={() => setClickCount(clickCount + 1)}>횟수 +1</button>
+                    </div>
+                    <p>횟수: {clickCount} / 적용한 검색어: {query || '(전체)'}</p>
+                    <SearchNotice onSearch={searchProducts} />
+                    <ul className="items">
+                        {filteredProducts.map(product => <li key={product.id}>{product.name}</li>)}
+                    </ul>
+                    {filteredProducts.length === 0 && <p className="result">검색 결과가 없습니다.</p>}
+                    <p className="hint">이 문제의 데이터는 작아서 실제 성능 차이는 거의 없습니다. 의존성이 바뀔 때만 계산과 함수 참조가 바뀌는 흐름을 확인하는 실습입니다.</p>
+                </section>
+            );
+        }
+
+        function App() {
+            return (
+                <>
+                    <DelayPractice />
+                    <ProductSearchPractice />
+                </>
+            );
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+    </script>
+</body>
+
+</html>

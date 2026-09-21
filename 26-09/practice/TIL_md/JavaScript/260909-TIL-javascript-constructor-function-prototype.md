@@ -1,4 +1,4 @@
-## [2026-09-07] Constructor Function 생성자 함수, Prototype 프로토타입 (상속)
+## [2026-09-09] Constructor Function 생성자 함수, Prototype 프로토타입 (상속)
 
 ### 1. 오늘 배운 핵심 개념 (What I Learned)
 #### Constructor Function 생성자 함수

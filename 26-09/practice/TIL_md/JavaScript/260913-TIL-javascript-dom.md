@@ -1,4 +1,4 @@
-## [2026-09-07] DOM Document Object Model
+## [2026-09-13] DOM Document Object Model
 
 ### 1. 오늘 배운 핵심 개념 (What I Learned)
 #### DOM
