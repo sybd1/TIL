@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>장바구니 메모장 실습</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+        body {
+            font-family: sans-serif;
+            padding: 40px;
+            background: #f4f6fa;
+        }
+
+        .card {
+            background: white;
+            padding: 24px;
+            border-radius: 12px;
+            border: 1px solid #dfe4ea;
+            max-width: 450px;
+        }
+
+        .input-box {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        input {
+            flex: 1;
+            padding: 8px 12px;
+            border: 1px solid #ced6e0;
+            border-radius: 6px;
+        }
+
+        button {
+            padding: 8px 14px;
+            border: 0;
+            border-radius: 6px;
+            background: #315efb;
+            color: white;
+            cursor: pointer;
+        }
+
+        button.clear {
+            background: #596275;
+            margin-left: auto;
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        button.done {
+            background: #2ed573;
+            padding: 4px 8px;
+            font-size: 13px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .count {
+            color: #596275;
+            margin-bottom: 12px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useRef } = React;
+
+        function ShoppingListApp() {
+            // 여기에 상태, Ref, 이벤트 핸들러를 작성하십시오.
+            const [itemName, setItemName] = useState('');
+            const [nextId, setNextId] = useState(3);
+            const [items, setItems] = useState([
+                { id: 1, name: '우유' },
+                { id: 2, name: '계란' }
+            ]);
+
+            const inputRef = useRef(null);
+
+            const handleAddBtn = () => {
+                if (itemName.trim() === '') {
+                    return;
+                }
+                const newItem = { id: nextId, name: itemName };
+
+                setItems([...items, newItem]);
+
+                setNextId(nextId + 1);
+
+                setItemName('');
+
+                inputRef.current.focus();
+            }
+
+            const handleDeleteBtn = () => {
+                setItems([]);
+            }
+
+            const handleComplite = (del) => {
+                setItems(items.filter(item => item.id !== del))
+            }
+
+            return (
+                <div className="card">
+                    <h2>장바구니 메모장</h2>
+                    <div className="count">담은 상품: {items.length}개</div>
+
+                    <div className="input-box">
+                        <input
+                            ref={inputRef}
+                            type="text"
+                            placeholder="살 물건 입력"
+                            value={itemName}
+                            onChange={(e) => setItemName(e.target.value)}
+                        />
+                        <button onClick={handleAddBtn}>담기</button>
+                    </div>
+
+                    <button className="clear" onClick={handleDeleteBtn}>전체 비우기</button>
+
+                    <ul>
+                        {items.map(item => (
+                            <li key={item.id}>
+                                <span>{item.name}</span>
+                                <button onClick={() => { handleComplite(item.id) }}>구매완료(삭제)</button>
+                            </li>
+                        ))}
+
+                    </ul>
+                </div>
+            );
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<ShoppingListApp />);
+    </script>
+</body>
+
+</html>
