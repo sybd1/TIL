@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        const API_URL = 'https://api.github.com/emojis'
+
+        const { useState, useEffect } = React;
+
+        function SearchBox({ onSearch }) {
+            const [inputText, setInputText] = useState('');
+
+            const handleSearchClick = () => {
+                onSearch(inputText);
+            }
+
+            return (
+                <>
+                    <input
+                        type="text"
+                        value={inputText}
+                        onChange={e => setInputText(e.target.value)}
+                    />
+                    <button onClick={handleSearchClick}>검색</button>
+                </>
+
+            )
+        }
+
+        function ImageBox({ imgUrl, loading, error }) {
+
+            if (loading) {
+                return <p>로딩중...</p>
+            }
+            if (error) {
+                return <p>이모지 목록을 불러오지 못했습니다.</p>
+            }
+            if (imgUrl) {
+                return <img src={imgUrl} alt='검색한 이모지'/>;
+            }
+            return (
+                <p>이모지를 검색해주세요 (결과 없음)</p>
+            )
+        }
+
+        function App() {
+            const [loading, setLoading] = useState(true);
+            const [emojis, setEmojis] = useState(null);
+            const [imgUrl, setImgUrl] = useState(null);
+            const [error, setError] = useState(null);
+
+            // Mount 시점에 단 한번만 전체 이모지 목록을 가져옴
+            useEffect(() => {
+                async function fetchEmojis() {
+                    try {
+                        const response = await axios.get(API_URL);
+                        console.log(response.data);
+                        setEmojis(response.data);   // 가져온 데이터를 state에 저장
+                    } catch (error) {
+                        console.error('이모지 목록 불러오기 실패', error);
+                    } finally {
+                        setLoading(false);
+                    }
+                }
+                fetchEmojis();
+            }, []);
+
+            const handleSearch = (emojiName) => {
+                if ( !emojis || emojiName.trim() === '') {
+                    setImgUrl(null);
+                    return;
+                } 
+                const normalName = emojiName.trim().toLowerCase();
+
+                // emojis 객체에서 normalName을 키로 가진 값을 찾는다
+                const foundUrl = emojis[normalName];
+                setImgUrl(foundUrl || null); // 찾았으면 url을, 못찾았으면 null 설정
+            }
+
+            return (
+                <>
+                    <h1>이모지 검색기</h1>
+
+                    <SearchBox onSearch={handleSearch} />
+                    <br />
+                    <ImageBox imgUrl={imgUrl} loading={loading} error={error} />    {/* 입력받고 객체에서 찾아 불러온 주소값을 자식에게 보낸다. */}
+                </>
+            )
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<App />)
+    </script>
+
+</body>
+
+</html>
