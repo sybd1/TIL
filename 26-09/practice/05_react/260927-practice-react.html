@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+
+        const { useState } = React;
+
+        const books = [
+            { id: 1, title: "React 입문", stock: 2 },
+            { id: 2, title: "JSX 연습", stock: 0 },
+            { id: 3, title: "컴포넌트", stock: 1 },
+        ];
+
+        function BookCard({ book, onBorrow }) {
+            const canBorrow = book.stock > 0;
+
+            return (
+                <li>
+                    <strong>{book.title}</strong>
+                    <span> 남은 수량: {book.stock}</span>
+                    <button onClick={() => onBorrow(book.id)} disabled={!canBorrow}>
+                        {canBorrow ? "대출" : "품절"}
+                    </button>
+                </li>
+            );
+        }
+
+        function Library() {
+            const [list, setList] = useState(books);
+            const [log, setLog] = useState("아직 대출 기록이 없습니다.");
+
+            console.log("Library가 렌더링되었습니다.");
+
+            const handleBorrow = (id) => {
+                const target = list.find((book) => book.id === id);
+
+                if (!target || target.stock === 0) {
+                    return;
+                }
+
+                setList((prev) =>
+                    prev.map((book) =>
+                        book.id === id ? { ...book, stock: book.stock - 1 } : book
+                    )
+                );
+                setLog(`${target.title}을 대출했습니다.`);
+            };
+
+            return (
+                <>
+                    <h1>도서관</h1>
+                    <p>{log}</p>
+                    <ul>
+                        {list.map((book) => (
+                            <BookCard key={book.id} book={book} onBorrow={handleBorrow} />
+                        ))}
+                    </ul>
+                </>
+            );
+        }
+
+
+        
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<Library />)
+    </script>
+
+</body>
+
+</html>
+
