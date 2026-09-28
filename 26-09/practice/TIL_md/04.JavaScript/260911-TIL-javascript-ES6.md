@@ -51,7 +51,7 @@ for (const element of interable) {
 const nmixx = ['릴리', '해원', '설윤'];
 
 for ( const nswer of nmixx) {
-    console.log(nmixx);
+    console.log(nswer);
 }   // 릴리, 해원, 설윤
 
 - spread syntax

@@ -112,27 +112,32 @@
 // console.log(first);        // {name: 'car', price: 200}
 // console.log(restProducts); // [ {name: 'airplane', ...}, {name: 'train', ...} ]
 
-const jiwoo = {
-    name: 'jiwoo-kim',
-    age: 20050413,
-    personality: 'cute'
-}
+// const jiwoo = {
+//     name: 'jiwoo-kim',
+//     age: 20050413,
+//     personality: 'cute'
+// }
 
-const { name, personality } = jiwoo;
-console.log(`Hi I'm ${name}. I think I'm very ${personality} `);
+// const { name, personality } = jiwoo;
+// console.log(`Hi I'm ${name}. I think I'm very ${personality} `);
 
-- setTimeout
-const timerId = setTimeout((name) => {
-    console.log(`${name}, 일어나 3초나 지났어`);
-}, 3000, "지우야");
+// - setTimeout
+// const timerId = setTimeout((name) => {
+//     console.log(`${name}, 일어나 3초나 지났어`);
+// }, 3000, "지우야");
 
-- setInterval
-let count = 1
-const intervalId = setInterval(() => {
-    console.log(`일어나! 해원아! ${count}초 지나가고 있어!`);
+// - setInterval
+// let count = 1
+// const intervalId = setInterval(() => {
+//     console.log(`일어나! 해원아! ${count}초 지나가고 있어!`);
 
-    if (count++ === 10) {
-        clearInterval(intervalId);
-        console.log('일어났구나 오해원...');
-    }
-},1000);
+//     if (count++ === 10) {
+//         clearInterval(intervalId);
+//         console.log('일어났구나 오해원...');
+//     }
+// },1000);
+
+const user = { id: 1, password: 'secret', name: '철수', age: 20};
+
+const {password, ...safeUser} = user;
+console.log(safeUser);  // { id: 1, name: '철수', age: 20 }
