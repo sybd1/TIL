@@ -137,7 +137,14 @@
 //     }
 // },1000);
 
-const user = { id: 1, password: 'secret', name: '철수', age: 20};
+// const user = { id: 1, password: 'secret', name: '철수', age: 20};
 
-const {password, ...safeUser} = user;
-console.log(safeUser);  // { id: 1, name: '철수', age: 20 }
+// const {password, ...safeUser} = user;
+// console.log(safeUser);  // { id: 1, name: '철수', age: 20 }
+
+const nums = [5234, 27, 134, 2, 327, 456, 89876, 6, 8, 53]
+
+nums.forEach((num) => {
+    
+    console.log(num * 10000);
+})
