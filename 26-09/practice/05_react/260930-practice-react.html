@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>React 기초 5. 삭제</title>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const { useState } = React;
+
+    // 기초 5. 과일 삭제
+    // 삭제 버튼을 누르면 그 과일만 목록에서 빠지게 하세요.
+
+    function FruitList() {
+      const [fruits, setFruits] = useState([
+        { id: 1, name: "사과" },
+        { id: 2, name: "바나나" },
+        { id: 3, name: "포도" },
+      ]);
+
+      const handleRemove = (id) => {
+        // TODO 1. id가 다른 과일만 남긴 새 배열을 setFruits에 넣으세요.
+        // 힌트: fruits.filter((fruit) => fruit.id !== id)
+       setFruits(fruits.filter((fruit) => fruit.id !== id));
+      };
+      console.log(fruits)
+      return (
+        <ul>
+          {fruits.map((fruit) => (
+            <li key={fruit.id}>
+              {fruit.name}
+              {/* TODO 2. 클릭하면 handleRemove(fruit.id)가 실행되게 하세요. */}
+              <button onClick={() => handleRemove(fruit.id)}>삭제</button>
+            </li>
+          ))}
+        </ul>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById("root")).render(<FruitList />);
+  </script>
+</body>
+</html>

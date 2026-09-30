@@ -1,0 +1,49 @@
+{
+  "items": [
+    {
+      "id": "1",
+      "name": "꽃게"
+    },
+    {
+      "id": "2",
+      "name": "상어"
+    },
+    {
+      "name": "감자",
+      "id": "53wBe7mak-U"
+    },
+    {
+      "name": "조약돌",
+      "id": "rDaRAhXFNNY"
+    },
+    {
+      "name": "양말",
+      "id": "jDoZ9RZvtXY"
+    },
+    {
+      "name": "검색",
+      "id": "VP5O_lV_9LI"
+    },
+    {
+      "name": "지렁이",
+      "id": "YtisuqOctAI"
+    },
+    {
+      "name": "썰매",
+      "id": "rfmVJf20U9Q"
+    },
+    {
+      "name": "마이클 캐릭",
+      "id": "9pcZor-B9cI"
+    },
+    {
+      "name": "Next.js",
+      "id": "grsiih_Jsy0"
+    },
+    {
+      "name": "맨허튼",
+      "id": "VUPnn6Zvshw"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
