@@ -33,12 +33,12 @@
     - trim(): 앞 뒤 공백 제거
     - concat(): 해당 문자열 마지막에 결합
 
-- System.out.printin(): JS에서 console.log() 같이 콘솔에 출력할 수 있는 함수다.
-    - System.out.printin("A\nB");       // A 한칸 띄우고 B가 출력
-    - System.out.printin("A\tB");       // A    B, A 탭하고 B 출력
-    - System.out.printin("C:\\Java");   // C:\Java
-    - System.out.printin("A\"B\"C");    // A"B"C
-    - System.out.printin("A\'B\'C");    // A'B'C
+- System.out.println(): JS에서 console.log() 같이 콘솔에 출력할 수 있는 함수다.
+    - System.out.println("A\nB");       // A 한칸 띄우고 B가 출력
+    - System.out.println("A\tB");       // A    B, A 탭하고 B 출력
+    - System.out.println("C:\\Java");   // C:\Java
+    - System.out.println("A\"B\"C");    // A"B"C
+    - System.out.println("A\'B\'C");    // A'B'C
 
 
 ### 2. 코드 예시 (Code)

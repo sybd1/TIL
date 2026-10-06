@@ -29,9 +29,10 @@
 
 - 매개변수의 타입, 개수, 순서를 정확히 맞춰서 인자를 전달해야 한다.
 - void: 반환 값이 없음을 뜻한다. void 자리에 반환 타입을 작성했다면, 그 타입에 맞는 값을 반드시 반환해야 한다.
-- pakage: 폴더 하나하나를 부르는 명칭.
+- pakage: 폴더 하나하나를 부르는 명칭. 같은 pakage 내에서는 클래스 이동이 자유롭다.
 - class 명은 pakage까지 포함되어 있다.
 - 다른 pakage에 있는 class를 사용하려면 import 구문이 있거나, com.ohgiraffers... 같은 클래스명 풀네임을 입력해야 한다.
+- static: method나 variable이 object 별로 존재하지 않고 class에 속하게 만드는 keyword.
 
 ### 2. 코드 예시 (Code)
 ```text
@@ -48,7 +49,7 @@ public class Nmixx {
     public static void main(String[] args) {
 
         - non-static 메소드의 경우
-        Nmixx nswer = new Nmixx();
+        Nmixx nswer = new Nmixx();  // nswer는 Nmixx 클래스의 인스턴스다.
         String result = nswer.member("지우", 22)
         System.out.println(result1);
 
