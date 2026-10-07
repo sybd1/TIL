@@ -8,7 +8,7 @@
     Java Byte Code라는 Java만의 특수한 중간 언어로, Compriler 이후 또 다른 번역 과정을 거친다.
     Byte Code로 번역된 언어를 JVM이 설치되어 있는 다른 운영체제의 컴퓨터에 보내면 다양한 운영체제에서 실행할 수 있게 도와준다.
 
-    .java -> .class(Byte code) -> JVM
+    .java -> Compiler -> .class(Byte code) -> JVM
 
 - JDK(Java Development Kit): Java를 개발하기 위해 필요한 모든 도구. COmpiler와 개발도구가 포함되어 있다.
 - JRE(Java Runtime Environment): Java로 작성된 프로그램을 실행시킬 수 있는 환경.
@@ -66,7 +66,7 @@ public class Nmixx {
 ```
 
 ### 3. 문제 해결 및 에러 (Troubleshooting / 헷갈린 점)
-- 자바에는 JS처럼 '===' 연산자가 없다.
+- 자바에는 JS처럼 '===' 연산자가 없다. 글자 내용이 같은지는 'equals'로 비교한다.
 - ''는 문자 형태, ""는 문자열 형태.
 
 
