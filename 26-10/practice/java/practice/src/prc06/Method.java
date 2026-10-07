@@ -1,4 +1,4 @@
-package prc;
+package prc06;
 
 public class Method {
     static void main(String[] args) {

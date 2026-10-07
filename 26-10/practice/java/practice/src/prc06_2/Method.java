@@ -1,6 +1,6 @@
-package prc2;
+package prc06_2;
 
-import prc.Calculator;
+import prc06.Calculator;
 
 public class Method {
     static void main(String[] args) {

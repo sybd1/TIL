@@ -1,4 +1,4 @@
-package prc2;
+package prc06_2;
 
 public class Nmixx {
     static void main(String[] args) {

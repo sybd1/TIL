@@ -1,4 +1,4 @@
-package prc;
+package prc06;
 
 public class Calculator {
 
