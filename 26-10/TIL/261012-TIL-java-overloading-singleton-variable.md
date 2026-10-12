@@ -17,25 +17,43 @@
 - 가변인자(...rest): 전달 인자의 개수가 유동적일 때 사용하는 기술. JS의 rest parameter과 유사하다. 전달한 값 0개 이상을 받아 메소드 내부에서 배열로 취급한다. 매개 변수의 마지막 위치에 작성해야 한다.
 
 #### singleton, final
-- singleton
-
-
+- 디자인 패턴: 프로그래밍을 하면서 자주 등장하는 문제를 효과적으로 해결하기 위한 검증된 설계 템플릿. singleton도 디자인 패턴의 일종이다.
+- singleton: 프로그램 전체에서 특정 클래스의 인스턴스(객체)가 단 하나만 존재하도록 보장한다.
+    - singleton = static + private 생성자.
+    - 예시) DB연결 설정, 로그 시스템, 앱 전역 설정 값... 등.
+    - Spring Boot 프레임워크에선 @Service, @Repository로 싱글톤을 간단하게 관리할 수 있다고 한다.
+- EagerSingleton: 클래스가 초기화될 때 객체가 생성된다. 사용하지 않아도 객체를 생성한다. 거의 항상 필요한 객체가 필요할 때 사용한다.
+- LazySingleton: 조건에 맞아 요청될 때 객체가 생성된다. 사용하지 않으면 생성하지 않는다. 필요할 때만 불러와야 하는 상황에 사용한다.
 
 - final
     - 재할당이 불가능한 상수. 조회만 가능하고 setter 메서드는 만들 수 없다.
     - 이름은 전부 대문자, 단어는 언더스코어로 구분. SNAKE_CASE를 사용하는 관례가 있다.
-    - final 인스턴스 필드: 객체 생성 시 딱 한 번 결정, 이후 변경 불가.
+    - final 인스턴스 필드: 객체 생성 시 딱 한 번 결정, 이후 변경 불가. 말 그대로 객체가 생설될 때 전달받은 값으로 초기화 되고, 초기화 된 이후에는 변경할 수 없다.
 
-    'public static final' = 공유하고(static) + 절대 못 바꾸는(final) 값?????????? 얘는 뭐하는 공식임?
+- 'public static final' = 공유하고(static) + 절대 못 바꾸는(final) 값
+    - 자바에서 모든 객체가 함께 사용하는, 재대입할 수 없는 값을 만들 때 자주 사용하는 문법.
+    - public -> 다른 클래스에서도 사용 가능.
+    - static -> 객체를 만들지 않아도 사용 가능.
+    - final -> 값을 다시 지정할 수 없음.
 
-#### static
+#### static, variable
+- static: static 멤버는 특정 객체가 아니라 클래스에 속한다. 객체를 생성하지 않고 클래스 이름으로 접근할 수 있으며 모든 인스턴스(객체)가 하나를 공유한다.
+    - Member: 클래스 안에 선언된 변수와 메서드를 통틀어 부르는 말.
 
+- non-static 필드: new로 객체를 만들 때마다 Heap에 새로 생성되며, 객체마다 독립적이다. "개인 사물함"
+- static 필드: 프로그램 시작 시 static 영역에 단 하나만 생성되며, 모든 객체가 공유한다. "공용 사물함". 클래스에 속하므로 this 문법을 사용할 수 없다.
 
-#### variable
-
+- 인스턴스 변수(non-static) : new로 객체를 만들 때 Heap 메모리에 생성. 같은 클래스 내 어느 메서드에서든 접근 가능. 객체가 살아있는 동안만 존재한다.
+- static 변수(클래스 변수): 프로그램 시작시 static 영역에 단 하나만 생성된다. 모든 인스턴스(객체)가 공유하며 프로그램 종료시까지 사라지지 않는다.
+    - 일반적인 JVM 메모리 모델에서는 클래스 관련 데이터로 관리. JVM 구현에 따라 세부적으로 달라진다. HotSpot에서는 실제 값이 Heap의 Class 관련 데이터에 저장됨.
+- 지역 변수: 메서드 안에서 선언하는 변수. Stack에 저장된다. 메서드가 호출 될 때 Stack 메모리에 생성되었다가 '}'를 만나는 순간 즉시 사라진다. 기본값이 없기 때문에 초기화 하지 않으면 사용이 불가능하다.
+    - JS에서는 이럴 경우 유연하게 undefined를 내뱉었지만, 자바에서는 얄짤없다. 메서드 내에서 생성됐다가 사라지기 때문에, 다른 메서드 블럭에서는 아예 불러올 수도 존재하지도 않는 값이다.
 
 #### 객체 배열
-
+- 사용자 정의 자료형을 만들어 객체 배열을 만들 수 있다. 객체 배열도 선언과 동시에 객체 배열 초기화가 가능하다.
+- 객체 배열 문법: 사용자정의자료형[] 변수명 = new 클래스[크기];
+    - Car[] car = new Car[3];
+- NullPointerException: 객체가 없는 상태(null)에서 그 객체를 사용하려고 할 때 발생하는 오류.
 
 #### Class 분리 구조 흐름
 
@@ -64,13 +82,40 @@ public nmixx(String mem1, String mem2, String mem3, String mem4, String mem5, St
     this.mem6 = mem6;
 }
 
+- EagerSingleton (이른 초기화)
+// 1. 클래스가 로딩되는 즉시 인스턴스를 딱 하나 미리 만들어 보관
+private static EagerSingleton eager = new EagerSingleton();
 
+// 2. 외부에서 new로 만들지 못하게 생성자를 private로 잠근다.
+private EagerSingleton() {}
+
+// 3. 유일한 객체를 건네주는 통로
+public static EagerSingleton getInstance() {
+    return eager;
+}
+
+- LaztSingleton (게으른 초기화)
+//1. 처음에는 null 값으로 비워둔다.
+private static LazySingleton lazy;
+
+// 2. 외부에서 new로 만들지 못하게 생성자를 private로 잠근다.
+private LazySingleton() {}
+
+// 3. 상황에 맞게 객체를 건네주는 유일한 통로
+public static LazySingleton getInstance() {
+    // 처음 호출될 때만 만들고, 이후에는 이미 만들어진 것을 반환
+    if (lazy == null) {
+        lazy = new LazySingleton();
+    }
+    return lazy;
+}
 
 
 ```
 
 ### 3. 문제 해결 및 에러 (Troubleshooting / 헷갈린 점)
 - 얕은 복사, 깊은복사와 값이 복사되는 방식(Pass by Value), 주소가 복사되는 방식(Pass by Reference) 이것들의 개념이 서로 상충되면서 헷갈린다. 메서드에 전달할 때는 '무엇이 복사되는가'를 생각하고, 객체를 복사할 때는 '내부 데이터까지 독립적으로 복사했는가'를 생각한다?
+- final 상수를 선언한 뒤에 잇따라 자료형도 사용해야 한다. final은 자료형이 아니다.
 
 
 ### 4. 내일 공부할 내용 (Next)
