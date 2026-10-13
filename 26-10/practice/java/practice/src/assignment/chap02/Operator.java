@@ -70,16 +70,15 @@ public class Operator {
         출력예시
         “본인이름”의 선물은 스타벅스 커피 입니다.
         또는 “본인이름”의 선물은 사탕 입니다. */
-        int month = 4;
-        int day = 13;
+        int month = 8;
+        int day = 20;
 
-        if (month <= 6) {
-            if (day <= 15) {
-                System.out.println("강민기님의 선물은 스타벅스 커피입니다.");
-            }
+        if (month <= 6 && month > 0 && day <= 15 && day > 0) {
+            System.out.println("강민기의 선물은 배민 쿠폰입니다.");
+        } else if (month <= 12 && month > 6 && day >= 16 && day <= 31) {
+            System.out.println("강민기님의 선물은 스타벅스 커피입니다.");
         } else {
-            System.out.println("강민기님의 선물은 배민 쿠폰입니다.");
+            System.out.println("강민기님의 선물은 사탕입니다.");
         }
-
     }
 }
