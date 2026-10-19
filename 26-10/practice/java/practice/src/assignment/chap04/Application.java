@@ -24,30 +24,30 @@ public class Application {
 
         Scanner sc = new Scanner(System.in);
 
-//        System.out.print("국어 점수를 입력하세요 : ");
-//        int kor = sc.nextInt();
-//        System.out.print("영어 점수를 입력하세요 : ");
-//        int eng = sc.nextInt();
-//        System.out.print("수학 점수를 입력하세요 : ");
-//        int math = sc.nextInt();
-//
-//        int avg = (kor + eng + math) / 3;
-//
-//        if (avg < 60) {
-//            System.out.println("평균 점수 미달로 불합격입니다.");
-//        }
-//        if (kor < 40) {
-//            System.out.println("국어 점수 미달로 불합격입니다.");
-//        }
-//        if (eng < 40) {
-//            System.out.println("영어 점수 미달로 불합격입니다.");
-//        }
-//        if (math < 40) {
-//            System.out.println("수학 점수 미달로 불합격입니다.");
-//        }
-//        if (avg >= 60 && kor >= 40 && eng >= 40 && math >= 40) {
-//            System.out.println("합격입니다!");
-//        }
+        System.out.print("국어 점수를 입력하세요 : ");
+        int kor = sc.nextInt();
+        System.out.print("영어 점수를 입력하세요 : ");
+        int eng = sc.nextInt();
+        System.out.print("수학 점수를 입력하세요 : ");
+        int math = sc.nextInt();
+
+        int avg = (kor + eng + math) / 3;
+
+        if (avg < 60) {
+            System.out.println("평균 점수 미달로 불합격입니다.");
+        }
+        if (kor < 40) {
+            System.out.println("국어 점수 미달로 불합격입니다.");
+        }
+        if (eng < 40) {
+            System.out.println("영어 점수 미달로 불합격입니다.");
+        }
+        if (math < 40) {
+            System.out.println("수학 점수 미달로 불합격입니다.");
+        }
+        if (avg >= 60 && kor >= 40 && eng >= 40 && math >= 40) {
+            System.out.println("합격입니다!");
+        }
 
         /* 문제 2
          * 영업사원의 월급을 계산하는 프로그램을 작성하려고 합니다.
