@@ -1,4 +1,4 @@
-## [2026-10-16] Java
+## [2026-10-20] MySQL Basic
 
 ### 1. 오늘 배운 핵심 개념 (What I Learned)
 
