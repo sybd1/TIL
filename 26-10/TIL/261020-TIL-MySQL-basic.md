@@ -67,6 +67,8 @@
 - SET OPERATORS (집합 연산자)
     - UNION: 두 결과를 합치고 중복은 제거한다. 합칠 두 SELECT 구문 중간에 UNION을 적으면 된다.
     - UNION ALL: 두 결과를 합치고 중복을 포함한다.
+    - INTERSECT: 교집합 구하기.
+    - EXCEPT: 차집합 구하기.
 ----
 - DML: (Data Manipulation Language)은 데이터베이스에 저장된 데이터를 조회하거나 변경하는 데 사용하는 SQL 명령어
 

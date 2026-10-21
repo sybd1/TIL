@@ -108,17 +108,20 @@ ORDER BY
 SELECT
 	a.emp_name,
     c.dept_title,
-    b.emp_name, 
-	d.dept_title
+    b.emp_name,
+    d.dept_title
 FROM
 	employee a
-LEFT JOIN employee b ON a.manager_id = b.emp_id
-LEFT JOIN department c ON a.dept_code = c.dept_id
-LEFT JOIN department d ON b.dept_code = d.dept_id
+LEFT JOIN
+	employee b ON a.manager_id = b.emp_id
+LEFT JOIN
+	department c ON a.dept_code = c.dept_id
+LEFT JOIN
+	department d ON b.dept_code = d.dept_id
 WHERE
 	b.emp_id IS NOT NULL
 ORDER BY
-	a.emp_name;
+	a.emp_name ASC;
 
 
 
