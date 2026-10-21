@@ -105,6 +105,20 @@ ORDER BY
 /* <4단계> 
 관리자가 존재하는 직원의 직원명, 부서명, 관리자의 직원명, 관리자의 부서명을 출력하세요.
 ** 이름순으로 정렬해주세요 */
+SELECT
+	a.emp_name,
+    c.dept_title,
+    b.emp_name, 
+	d.dept_title
+FROM
+	employee a
+LEFT JOIN employee b ON a.manager_id = b.emp_id
+LEFT JOIN department c ON a.dept_code = c.dept_id
+LEFT JOIN department d ON b.dept_code = d.dept_id
+WHERE
+	b.emp_id IS NOT NULL
+ORDER BY
+	a.emp_name;
 
 
 
