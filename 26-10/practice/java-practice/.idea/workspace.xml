@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="10a4b238-9fab-4601-a957-4c3d5748ec44" name="변경" comment="">
+      <change beforePath="$PROJECT_DIR$/java/practice/src/assignment/chap01/LiteralAndVariable.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/practice/src/com/assignment/chap01/LiteralAndVariable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/practice/src/assignment/chap02/Operator.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/practice/src/com/assignment/chap02/Operator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/practice/src/assignment/chap03/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/practice/src/com/assignment/chap03/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/practice/src/assignment/chap03/Calculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/practice/src/com/assignment/chap03/Calculator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/practice/src/assignment/chap04/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/practice/src/com/assignment/chap04/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/practice/src/assignment/chap05/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/practice/src/com/assignment/chap05/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/practice/src/assignment/chap06/test1/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/practice/src/com/assignment/chap06/test1/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/practice/src/assignment/chap06/test1/BookDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/practice/src/com/assignment/chap06/test1/BookDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/practice/src/assignment/chap06/test2/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/practice/src/com/assignment/chap06/test2/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/practice/src/assignment/chap06/test2/StudentDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/practice/src/com/assignment/chap06/test2/StudentDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/practice/src/prc06/Calculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/practice/src/com/practice/prc06/Calculator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/practice/src/prc06/Loops.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/practice/src/com/practice/prc06/Loops.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/practice/src/prc06/Method.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/practice/src/com/practice/prc06/Method.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/practice/src/prc06_2/Method.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/practice/src/com/practice/prc06_2/Method.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/practice/src/prc06_2/Nmixx.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/practice/src/com/practice/prc06_2/Nmixx.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/practice/src/prc07/Array.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/practice/src/com/practice/prc07/Array.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/practice/src/prc07/Array2.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/practice/src/com/practice/prc07/Array2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/practice/src/prc08/Lotto.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/practice/src/com/practice/prc08/Lotto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/practice/src/prc08/SelectionSort.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/practice/src/com/practice/prc08/SelectionSort.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/practice/src/prc09/abstraction/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/practice/src/com/practice/prc09/abstraction/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/practice/src/prc09/abstraction/Human.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/practice/src/com/practice/prc09/abstraction/Human.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/practice/src/prc09/abstraction/Nmixx.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/practice/src/com/practice/prc09/abstraction/Nmixx.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/practice/src/prc11/bubleSort/buble.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/practice/src/com/practice/prc11/bubleSort/buble.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2,
+  &quot;fromUser&quot;: false
+}</component>
+  <component name="ProjectId" id="3KcCe82pMxZJYZ76PQAkPkmdIfq" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/curriculum/TIL/26-10/practice",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.jshint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.jshint": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "애플리케이션.Application.executor": "Run",
+    "애플리케이션.LiteralAndVariable.executor": "Run",
+    "애플리케이션.Operator.executor": "Run"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-a203e0a19954-intellij.indexing.shared.core-IU-262.10968.63" />
+        <option value="bundled-js-predefined-d6986cc7102b-4abd2a77f808-JavaScript-IU-262.10968.63" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="디폴트 작업">
+      <changelist id="10a4b238-9fab-4601-a957-4c3d5748ec44" name="변경" comment="" />
+      <created>1791847563639</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1791847563639</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

@@ -63,9 +63,29 @@ FROM (
 ) AS target_members;
 
 /*### Q4.
-1. 부서가 영업부가 아니면서(부서명에 ‘영업’이 포함되지 않음) 직급명이 ‘대리’ 혹은 ‘차장’인 직원의 목록과 급여가 200만원 이상 300만원 이하인 직원의 목록을 합쳐 출력합니다. 
+1. 부서가 영업부가 아니면서(부서명에 ‘영업’이 포함되지 않음) 직급명이 ‘대리’ 혹은 ‘차장’인 
+직원의 목록과 급여가 200만원 이상 300만원 이하인 직원의 목록을 합쳐 출력합니다. 
 (이때, 직원의 사원번호, 직원명, 전화번호, 부서명, 직급명, 급여를 출력하도록 하세요.) 
 UNION ALL을 활용하세요. */
+SELECT 
+	e.emp_id, e.emp_name, e.phone, d.dept_title, j.job_name, e.salary
+FROM 
+	employee e
+JOIN job j ON e.job_code = j.job_code
+JOIN department d ON e.dept_code = d.dept_id
+WHERE j.job_name IN ('대리', '차장')
+AND d.dept_title NOT LIKE ('%영업%')
+
+UNION ALL
+    
+SELECT
+    e.emp_id, e.emp_name, e.phone, d.dept_title, j.job_name, e.salary
+FROM 
+	employee e
+JOIN department d ON e.dept_code = d.dept_id
+JOIN job j ON e.job_code = j.job_code
+WHERE e.salary BETWEEN 2000000 AND 3000000;
+	
 
 /* 2. 1에서 출력한 목록에서 직원의 이름과 급여를 기준으로 묶어 해당 직원이 몇 번 나오는지 카운트합니다. 
 (이때, 추출한 목록에는 직원명, 급여, 나온 횟수가 출력되도록 하세요.)
@@ -95,6 +115,3 @@ GROUP BY emp_name, salary
 
 ORDER BY count DESC, salary DESC
 LIMIT 3;
-
-
-/* */
