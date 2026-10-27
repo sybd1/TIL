@@ -25,7 +25,7 @@
 
 - XML 설정 방식: 컴파일 없이 XML 수정만으로 빈 변경 가능, 오타 검증이 어렵고 파일 관리가 복잡해서 거의 사용하지 않는 방식이다.
 - Java Config(Configuration): @Configuration 클래스 내부에 @Bean 메서드를 정의하여 스프링 빈을 수동으로 등록하는 방식.
-    - @Configuration: 해당 클래스가 스프링 설정 클래스임을 나타내는 어노테이션.
+    - @Configuration: 해당 클래스가 스프링 설정 클래스임을 나타내는 어노테이션. 빈을 만드는 방법이 적힌 설정 클래스.
     - @Bean: Sping 메서드가 반환하는 객체를 스프링 컨테이너에 빈으로 등록하는 어노테이션.
 - 컴포넌트 스캔(ComponentScan): Spring에서 **컴포넌트 스캔(Component Scan)**은 개발자가 빈을 일일이 등록하지 않아도, 특정 패키지 내의 클래스를 탐색하여 스프링 빈(Spring Bean)으로 자동 등록하는 기능이다. 주로 @ComponentScan과 @Component 어노테이션을 사용한다.
     - @ComponentScan: 지정된 패키지와 하위 패키지를 탐색하여 @Component가 붙은 클래스를 자동으로 스프링 빈으로 등록하는 기능입니다.
