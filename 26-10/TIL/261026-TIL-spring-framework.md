@@ -73,20 +73,23 @@
 
 #### 심화 및 연계 학습 (Next Step: Bean Scope & Spring Boot)
 
-### 1) 빈 스코프(Bean Scope): Singleton vs Prototype
+##### 1) 빈 스코프(Bean Scope): Singleton vs Prototype
 스프링 컨테이너는 기본적으로 빈을 **싱글톤(Singleton)**으로 관리합니다.
 - **Singleton (기본값)**: 애플리케이션 구동 시 단 하나의 인스턴스만 생성되어 컨테이너 전체에서 공유됩니다. 서버 자원을 획기적으로 아낄 수 있지만, **상태를 가지지 않는 무상태(Stateless) 방식**으로 설계해야 멀티스레드 환경에서 안전합니다.
 - **Prototype (`@Scope("prototype")`)**: 컨테이너에 요청할 때마다(`getBean()` 또는 주입 시) 새로운 인스턴스를 생성하여 반환합니다. 생성 및 의존관계 주입까지만 컨테이너가 관여하고 소멸 제어는 클라이언트가 담당합니다.
 
-### 2) 동일 타입 빈이 2개 이상일 때 충돌 해결 전략
+##### 2) 동일 타입 빈이 2개 이상일 때 충돌 해결 전략
 인터페이스 구현체가 2개 이상(`MemoryMemberRepository`, `JdbcMemberRepository`)일 때:
 1. **`@Primary`**: 메인으로 사용할 기본 빈 클래스에 선언하여 우선권 부여.
 2. **`@Qualifier("빈이름")`**: 주입받는 위치에서 특정 빈 이름을 지정하여 명시적으로 선택 (`@Qualifier`가 `@Primary`보다 우선순위가 높음).
 3. **`List<MemberRepository>` / `Map<String, MemberRepository>`**: 모든 구현체를 컬렉션으로 한 번에 주입받아 전략 패턴(Strategy Pattern)으로 다형적 활용.
 
-### 3) 다음 단계 기술 연계 (Spring Boot & 영속성 프레임워크)
+##### 3) 다음 단계 기술 연계 (Spring Boot & 영속성 프레임워크)
 - 오늘 배운 순수 스프링 코드는 **Spring Boot**로 넘어가면서 `@SpringBootApplication` 어노테이션 하나로 설정이 극대화되어 자동화됩니다.
 - 메모리 저장소(`store Map`)는 향후 **MyBatis**(SQL 매핑 프레임워크) 또는 **JPA / Spring Data JPA**(ORM 기술)를 통해 실제 관계형 데이터베이스(MySQL, PostgreSQL)와 연결되어 트랜잭션 단위로 안전하게 영속화됩니다.
+
+
+
 
 오늘 수업 핵심 Q&A (궁금증 및 혼란 해소)
 
