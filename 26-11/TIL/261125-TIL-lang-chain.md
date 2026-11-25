@@ -4,6 +4,7 @@
 #### LangChain
 LLM을 활용하는 프로그램에서 프롬프트 작성, 모델 호출, 응답 처리를 연결하는 라이브러리. 필요한 단계를 연결해 하나의 실행 흐름(체인)으로 구성할 수 있다.
 
+- LangChain의 프롬프트: AI에게 보낼 입력(문장 + 역할 구조 + 예시 + 형식 지시)을 "빈칸이 있는 틀"로 만들어 두고, 필요할 때 채워서 쓰는 것.
 > 라이브러리 설치: pip install langchain-core langchain-openai
 
 - PromptTemplate: 변수가 들어갈 문자열 하나짜리 프롬프트를 만든다. invoke하면 문자열 형태의 결과(StringPromptValue)가 나온다.
@@ -29,15 +30,64 @@ LLM을 활용하는 프로그램에서 프롬프트 작성, 모델 호출, 응�
 - Field(): 항목에 추가 규칙과 설명을 붙인다.
     - min_length=1: 최소 한 글자 이상이어야 한다는 규칙이다. 빈 문자열은 거부된다.
     - description="판단 근거": 이 항목이 무슨 내용인지 적는 설명이다. 나중에 모델에게 형식을 안내할 때 이 설명도 같이 전달된다.
+- PydanticOutputParser(pydantic_object=검증할클래스): JSON을 클래스 규칙으로 검증하고, 통과한 값을 그 클래스의 객체로 반환.
+    - get_format_instructions(): 클래스의 항목과 규칙을 모델에게 전달할 JSON 응답 형식 안내로 만든다.
+- partial(): 템플릿의 빈칸 중 일부를 미리 채워 둔 새 템플릿을 만든다. 빈칸 일부를 미리 채워서, 남은 빈칸만 나중에 넣으면 되는 새 템플릿을 만든다.
+
+#### Quiz generation
+- @model_validator(mode="after"): BaseModel을 상속받은 클래스에서만 사용할 수 있는 데코레이터. 각 필드의 검사를 통과한 뒤(mode="after"), 같은 퀴즈의 보기와 정답을 함께 검사한다.
+- set(): 순서가 없고 중복을 허용하지 않는다. 중복을 제외한 값들의 집합을 만든다.
+- any(): 값들 중 "하나라도" True이면 True, 전부 False이면 False를 반환한다.
 
 ```python
 class Nmixx(BaseModel): # Nmixx 클래스는 BaseModel의 자식 클래스가 된다. Java에선 "Nmixx extend BaseModel"과 의미가 같다.
     model_config = ConfigDict(extra="forbid")   # 이 클래스의 검사 설정, 
 ```
+#### LangChain RAG
+RAG (Retrieval-Augmented Generation, 검색 증강 생성) : 질문과 관련된 자료를 검색해서 프롬프트에 함께 넣고, 모델이 그 자료를 근거로 답변하게 하는 기법.
+- 모델을 재학습하지 않고, 모델이 모르는 내 자료(정책, 문서)를 활용할 수 있다.
+
+##### Loader and Documents
+- Documents(): LangChain이 문서를 다루는 표준 객체. 본문과 부가 정보를 함께 보관하는 객체 생성.
+    - page_content: 본문 문자열.
+    - metadata: 출처, 페이지 같은 부가 정보를 담은 딕셔너리. 답변의 근거 출처를 보여 주거나 검색 범위를 좁힐 때 사용한다.
+- Loader: 파일을 읽어 Document 리스트로 바꿔 주는 부품. TextLoader(경로, encoding="utf-8").load()는 파일이 하나여도 Document의 리스트를 반환한다.
+    - 리스트를 반환하므로 여러 파일을 모을 때는 append가 아니라 extend를 쓴다.
+    - TextLoader는 metadata["source"]에 전체 경로를 넣는다. 파일명만 남기려면 Path(...).name으로 바꾼다.
+- Path(__file__).resolve().parent / "data": 현재 파일 기준으로 data 폴더 경로를 만든다.
+    - resolve(): 절대 경로로 바꾼다. parent: 한 단계 위 폴더(이 파일이 있는 폴더). /: 경로를 이어 붙이는 pathlib 연산자.
+    - 어느 위치에서 실행해도 같은 파일을 찾을 수 있다.
+- path.read_text(encoding="utf-8"): 파일 내용을 문자열로 읽는다. 한글이 깨지지 않도록 인코딩을 지정한다.
+
+##### PDF 로드 (pypdf)
+- PdfReader(경로): PDF 파일을 읽는다. reader.pages는 페이지 리스트이다.
+- page.extract_text(): 해당 페이지의 글자를 문자열로 추출한다. 글자가 없으면 None이 나올 수 있어 `or ""`로 빈 문자열로 바꿔 준다.
+    - `A or B`: A가 None이나 빈 문자열처럼 False로 취급되면 B를 사용한다.
+- enumerate(reader.pages, start=1): 번호와 페이지를 한 쌍씩 꺼낸다. start=1로 사람이 쓰는 페이지 번호에 맞춘다.
+- if not text.strip(): continue: 글자가 없는 페이지는 건너뛴다. 이미지로만 된 페이지(스캔본)는 글자 추출이 안 되며 OCR이 필요하다.
+
+> OCR(Optical Character Recognition, 광학 문자 인식): 이미지 속의 글자를 읽어서 진짜 텍스트(문자열)로 바꿔주는 기술이다.
+
+
 
 ### 2. 코드 예시 (Code)
-```text
+```python
+# 텍스트 파일 → Document
+document = Document(
+    page_content=path.read_text(encoding="utf-8"),   # 본문
+    metadata={"source": path.name}                   # 출처(파일명)
+)
 
+# PDF → 페이지별 Document
+reader = PdfReader(DATA_FILE)
+for page_number, page in enumerate(reader.pages, start=1):
+    text = page.extract_text() or ""
+    if not text.strip():
+        continue
+    documents.append(Document(
+        page_content=text.strip(),
+        metadata={"source": DATA_FILE.name, "page": page_number}
+    ))
 ```
 
 ### 3. 문제 해결 및 에러 (Troubleshooting / 헷갈린 점)
