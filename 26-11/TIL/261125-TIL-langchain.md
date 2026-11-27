@@ -11,7 +11,7 @@ LLM을 활용하는 프로그램에서 프롬프트 작성, 모델 호출, 응�
 - ChatPromptTemplate: system, human, ai 같은 역할이 붙은 메시지 목록 형태의 프롬프트를 만든다. invoke하면 메시지 리스트 형태의 결과(ChatPromptValue)가 나온다.
     - from_template(): 템플릿 문자열로 템플릿 객체를 만든다. {변수}를 자동으로 찾아 입력 변수로 등록한다. ChatPromptTemplate에서는 문자열이 human 메시지 하나가 된다.
     - from_messages(): ("system", ...), ("human", ...)처럼 역할별 메시지를 여러 개 지정할 때 사용한다.
-- invoke(): LangChain의 Runnable 인터페이스 메서드. Runnable(템플릿, 모델, 파서, 체인 등)에 입력을 넣고 한 번 실행해서 결과를 반환한다. 입력 형식과 출력 형식은 객체마다 다르다. 템플릿은 딕셔너리를 받고, 파서는 문자열을 받는다.
+- **invoke**(): LangChain의 Runnable 인터페이스 메서드. Runnable(템플릿, 모델, 파서, 체인 등)에 입력을 넣고 한 번 실행해서 결과를 반환한다. 입력 형식과 출력 형식은 객체마다 다르다. 템플릿은 딕셔너리를 받고, 파서는 문자열을 받는다.
 
 #### Runnable chain
 - StrOutputParser(): 모델의 응답 메시지(AIMessage)에서 텍스트를 꺼내 문자열로 반환.
